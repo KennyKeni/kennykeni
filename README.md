@@ -1,90 +1,71 @@
-# Kenny Lin Portfolio
+# Kenny Lin
 
-Personal portfolio and resume website built with TanStack Start, TanStack Router, and Shadcn UI.
+Software engineer focused on full-stack product development, distributed systems, and machine learning applications.
 
-## Overview
+## About
 
-This project presents:
-- Resume-style homepage with education, experience, featured projects, and technical skills
-- Dedicated project detail pages
-- Minimal, sharp-edged visual system with custom Geist Pixel typography
+I am currently pursuing a concurrent B.S./M.S. in Computer Science at Georgia Tech. I enjoy building production systems that are reliable, measurable, and fast to iterate on, especially across backend infrastructure and frontend product surfaces.
 
-## Tech Stack
+## Education
 
-- React 19
-- TanStack Start + TanStack Router
-- Tailwind CSS v4
-- Shadcn UI
-- TypeScript
-- Bun
-- Cloudflare Workers (deployment target)
+**Georgia Institute of Technology**  
+Master of Science in Computer Science (Concurrent B.S./M.S.)  
+Aug 2025 - May 2027 | Atlanta, GA
 
-## Current Routes
+**Georgia Institute of Technology**  
+Bachelor of Science in Computer Science, GPA: 4.0  
+Aug 2023 - May 2026 | Atlanta, GA
 
-- `/` - Resume homepage
-- `/projects` - Projects directory
-- `/projects/agentic-rag`
-- `/projects/aglaea`
-- `/projects/breast-cancer-cnn`
+## Experience
 
-## Local Development
+**Software Engineering Intern, Viasat**  
+May 2025 - Aug 2025 | Carlsbad, CA
+- Automated customer order validation and fulfillment with Python batch processing and AWS SQS, increasing processing speed by 300%.
+- Built a concurrent distributed pipeline for 20+ simultaneous batches, reducing runtime from 4 hours to 10 minutes.
+- Designed GraphQL endpoints and integrated AWS SQS, S3, and CloudWatch for real-time batch monitoring.
 
-### Prerequisites
+**Full Stack Developer, Bits of Good (Nonprofit)**  
+Jan 2024 - Present | Atlanta, GA
+- Built a web application with iCAN to gamify medication adherence for children in clinical trials.
+- Implemented complex UI flows with React and Tailwind CSS for better usability and maintainability.
+- Developed REST integration patterns with TanStack Query for reliable frontend-backend state synchronization.
 
-- Bun installed (`>=1.x`)
+**Machine Learning Undergraduate Researcher, Intelligent Digital Communications**  
+Aug 2024 - Present | Atlanta, GA
+- Developed a near real-time system to identify and triangulate wireless users (including drones) in signal-dense environments.
+- Applied transfer learning to Co-DETR models using PyTorch and scikit-learn, reaching 85% detection accuracy.
 
-### Install
+## Selected Projects
 
-```bash
-bun install
-```
+**Agentic RAG** | Python, Go, FastAPI, LlamaIndex, Qdrant, SQLAlchemy, Docker  
+Jul 2025 - Present
+- Built an agentic RAG backend that reasons over user queries using vector retrieval.
+- Implemented semantic search, hybrid retrieval, and reranking to improve answer quality.
+- Deployed Dockerized services to a VPS, reducing operating cost by 60%.
 
-### Run Dev Server
+**Aglaea** | TypeScript, SvelteKit, Elysia, PostgreSQL, Kafka, Cloudflare Workers  
+Nov 2024 - Present
+- Built a production content platform serving 500+ concurrent users with rich text and structured content systems.
+- Implemented a transactional outbox with Kafka to drive domain events and RAG embedding invalidation.
+- Built secure direct-to-R2 uploads via Cloudflare Workers with JWT authentication and validation.
+- Designed PostgreSQL trigram search and background workers using `FOR UPDATE SKIP LOCKED` for safe multi-instance polling.
 
-```bash
-bun run dev
-```
+**Breast Cancer Detection with CNN** | Python, PyTorch, Pandas, scikit-learn  
+Oct 2024 - Dec 2024
+- Trained a CNN for medical image classification, achieving 82% accuracy.
+- Improved performance by 20% with transfer learning using EfficientNet and Inception-ResNet-v2.
 
-The app runs at `http://localhost:3000`.
+## Technical Skills
 
-## Build and Quality
+**Languages:** Python, TypeScript, JavaScript, Java, Kotlin, Go, C, C++, SQL, HTML/CSS  
+**Frameworks:** React, Svelte, Next.js, Elysia, NestJS, FastAPI, PyTorch, TensorFlow, LlamaIndex, Tailwind  
+**Databases and Cloud:** PostgreSQL, MongoDB, Redis, Qdrant, AWS (SQS, S3, CloudWatch), Docker  
+**Tools:** Git, Linux, Bun, Kysely, BetterAuth, REST APIs, CI/CD
 
-```bash
-bun run build
-bun run test
-bun run lint
-bun run format
-bun run check
-```
+## Contact
 
-## Deployment
-
-This project is configured for Cloudflare Workers via Wrangler.
-
-```bash
-bun run deploy
-```
-
-## Project Structure
-
-```text
-src/
-  components/
-    ui/                  # Shadcn UI components
-  routes/                # File-based routes
-    __root.tsx
-    index.tsx
-    projects.index.tsx
-    projects.agentic-rag.tsx
-    projects.aglaea.tsx
-    projects.breast-cancer-cnn.tsx
-  styles.css             # Global theme and typography
-public/
-  fonts/geist-pixel/     # Local font files
-```
-
-## Notes
-
-- Styling is intentionally minimal and high-contrast.
-- UI primitives are based on Shadcn components and project theme tokens.
-- No generated demo/template pages are included.
+- Email: [linkenny777@gmail.com](mailto:linkenny777@gmail.com)
+- LinkedIn: [linkedin.com/in/kennylin344](https://linkedin.com/in/kennylin344)
+- GitHub: [github.com/kennykeni](https://github.com/kennykeni)
+- Location: New York, NY
+- Work Authorization: US Citizen
