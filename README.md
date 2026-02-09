@@ -3,7 +3,6 @@
 Building full-stack systems, distributed backend services, and ML-powered products.
 
 - New York, NY
-- US Citizen
 - Email: [linkenny777@gmail.com](mailto:linkenny777@gmail.com)
 - LinkedIn: [linkedin.com/in/kennylin344](https://linkedin.com/in/kennylin344)
 - GitHub: [github.com/kennykeni](https://github.com/kennykeni)
