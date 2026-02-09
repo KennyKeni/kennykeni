@@ -1,0 +1,186 @@
+{
+	"person": {
+		"name": "Kenny Lin",
+		"homeEyebrow": "Resume",
+		"contactLine": "631-264-4497 | linkenny777@gmail.com | New York, NY | US Citizen"
+	},
+	"headerNav": [
+		{ "to": "/", "label": "Home" },
+		{ "to": "/projects", "label": "Projects" },
+		{ "to": "/projects/agentic-rag", "label": "Agentic RAG" },
+		{ "to": "/projects/aglaea", "label": "Aglaea" }
+	],
+	"home": {
+		"profileLinks": [
+			{
+				"label": "linkedin.com/in/kennylin344",
+				"href": "https://linkedin.com/in/kennylin344"
+			},
+			{
+				"label": "github.com/kennykeni",
+				"href": "https://github.com/kennykeni"
+			}
+		],
+		"education": [
+			{
+				"school": "Georgia Institute of Technology",
+				"degree": "Master of Science in Computer Science (Concurrent B.S./M.S.)",
+				"location": "Atlanta, GA",
+				"period": "Aug 2025 - May 2027"
+			},
+			{
+				"school": "Georgia Institute of Technology",
+				"degree": "Bachelor of Science in Computer Science (GPA: 4.0)",
+				"location": "Atlanta, GA",
+				"period": "Aug 2023 - May 2026"
+			}
+		],
+		"experiences": [
+			{
+				"role": "Software Engineering Intern",
+				"org": "Viasat",
+				"location": "Carlsbad, CA",
+				"period": "May 2025 - Aug 2025",
+				"bullets": [
+					"Automated customer order validation and fulfillment with Python batch processing and AWS SQS, increasing speed by 300%.",
+					"Built concurrent worker pipeline processing 20+ batches in parallel, cutting runtime from 4 hours to 10 minutes.",
+					"Designed GraphQL endpoints and integrated AWS SQS, S3, and CloudWatch for real-time batch monitoring."
+				]
+			},
+			{
+				"role": "Full Stack Developer",
+				"org": "Bits of Good (Nonprofit)",
+				"location": "Atlanta, GA",
+				"period": "Jan 2024 - Present",
+				"bullets": [
+					"Developed a web app with iCAN to gamify medication adherence for children in clinical trials.",
+					"Implemented complex UI flows with React and Tailwind CSS to improve usability and maintainability.",
+					"Created REST API integration layer with TanStack Query for reliable frontend-backend communication."
+				]
+			},
+			{
+				"role": "Machine Learning Undergraduate Researcher",
+				"org": "Intelligent Digital Communications",
+				"location": "Atlanta, GA",
+				"period": "Aug 2024 - Present",
+				"bullets": [
+					"Developed a near real-time system to identify and triangulate wireless users in signal-dense environments.",
+					"Applied transfer learning to Co-DETR models with PyTorch and scikit-learn, achieving 85% detection accuracy."
+				]
+			}
+		],
+		"featuredProjects": [
+			{
+				"to": "/projects/agentic-rag",
+				"title": "Agentic RAG",
+				"summary": "Agentic FastAPI backend using vector + hybrid retrieval, reranking, and cost-efficient VPS deployment.",
+				"tags": ["Python", "FastAPI", "LlamaIndex", "Qdrant"]
+			},
+			{
+				"to": "/projects/aglaea",
+				"title": "Aglaea",
+				"summary": "Production content platform with event-driven architecture, Kafka outbox, and Cloudflare edge uploads.",
+				"tags": ["TypeScript", "SvelteKit", "PostgreSQL", "Kafka"]
+			},
+			{
+				"to": "/projects/breast-cancer-cnn",
+				"title": "Breast Cancer Detection with CNN",
+				"summary": "PyTorch transfer-learning pipeline for medical image classification with strong performance on limited data.",
+				"tags": ["PyTorch", "CNN", "EfficientNet", "scikit-learn"]
+			}
+		],
+		"skills": [
+			{
+				"label": "Languages",
+				"value": "Python, TypeScript, JavaScript, Java, Kotlin, Go, C, C++, SQL, HTML/CSS"
+			},
+			{
+				"label": "Frameworks",
+				"value": "React, Svelte, Next.js, Elysia, NestJS, FastAPI, PyTorch, TensorFlow, LlamaIndex, Tailwind"
+			},
+			{
+				"label": "Databases & Cloud",
+				"value": "PostgreSQL, MongoDB, Redis, Qdrant, AWS (SQS, S3, CloudWatch), Docker"
+			},
+			{
+				"label": "Tools",
+				"value": "Git, Linux, Bun, Kysely, BetterAuth, RESTful APIs, CI/CD"
+			}
+		]
+	},
+	"projectsIndex": {
+		"eyebrow": "Projects Directory",
+		"title": "Projects",
+		"items": [
+			{
+				"to": "/projects/agentic-rag",
+				"title": "Agentic RAG",
+				"status": "In Progress",
+				"summary": "Agentic RAG backend with semantic/hybrid retrieval, reranking, and low-cost VPS deployment.",
+				"stack": ["Python", "Go", "FastAPI", "LlamaIndex", "Qdrant"]
+			},
+			{
+				"to": "/projects/aglaea",
+				"title": "Aglaea",
+				"status": "Production",
+				"summary": "Gaming content platform with rich text authoring, outbox-to-Kafka events, and edge uploads.",
+				"stack": [
+					"TypeScript",
+					"SvelteKit",
+					"PostgreSQL",
+					"Kafka",
+					"Cloudflare Workers"
+				]
+			},
+			{
+				"to": "/projects/breast-cancer-cnn",
+				"title": "Breast Cancer Detection with CNN",
+				"status": "Completed",
+				"summary": "Medical imaging classifier using transfer learning with EfficientNet and Inception-ResNet-v2.",
+				"stack": ["Python", "PyTorch", "Pandas", "scikit-learn"]
+			}
+		]
+	},
+	"projectDetails": [
+		{
+			"slug": "agentic-rag",
+			"title": "Agentic RAG",
+			"periodLabel": "Project / July 2025 - Present",
+			"tags": ["Python", "Go", "FastAPI", "LlamaIndex", "Qdrant", "Docker"],
+			"bullets": [
+				"Built an agentic RAG FastAPI backend that reasons over user questions with vector retrieval.",
+				"Implemented semantic search, hybrid search, and reranking to improve answer quality.",
+				"Deployed Dockerized backend and databases to a VPS, reducing operating costs by 60%."
+			]
+		},
+		{
+			"slug": "aglaea",
+			"title": "Aglaea",
+			"periodLabel": "Project / Nov 2024 - Present",
+			"tags": [
+				"TypeScript",
+				"SvelteKit",
+				"Elysia",
+				"PostgreSQL",
+				"Kafka",
+				"Cloudflare Workers"
+			],
+			"bullets": [
+				"Built a production content platform supporting a gaming community with 500+ concurrent users.",
+				"Implemented transactional outbox publishing domain events to Kafka for RAG embedding invalidation.",
+				"Built Cloudflare Worker upload pipeline to R2 with JWT auth and strict file validation.",
+				"Designed trigram search and background workers with FOR UPDATE SKIP LOCKED for safe polling."
+			]
+		},
+		{
+			"slug": "breast-cancer-cnn",
+			"title": "Breast Cancer Detection with CNN",
+			"periodLabel": "Project / Oct 2024 - Dec 2024",
+			"tags": ["Python", "PyTorch", "Pandas", "scikit-learn"],
+			"bullets": [
+				"Trained a CNN model for breast cancer image analysis and reached 82% detection accuracy.",
+				"Applied transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%."
+			]
+		}
+	]
+}

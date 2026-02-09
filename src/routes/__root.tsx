@@ -1,49 +1,58 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
-import Header from '../components/Header'
+import Header from "../components/Header";
 
-import appCss from '../styles.css?url'
+import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'Klin Portfolio',
-      },
-      {
-        name: 'description',
-        content: 'Minimal pixel-themed portfolio with project case studies.',
-      },
-    ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
-  }),
+	head: () => ({
+		meta: [
+			{
+				charSet: "utf-8",
+			},
+			{
+				name: "viewport",
+				content: "width=device-width, initial-scale=1",
+			},
+			{
+				title: "Klin Portfolio",
+			},
+			{
+				name: "description",
+				content: "Minimal pixel-themed portfolio with project case studies.",
+			},
+		],
+		links: [
+			{
+				rel: "stylesheet",
+				href: appCss,
+			},
+			{
+				rel: "icon",
+				type: "image/svg+xml",
+				href: "/favicon.svg",
+			},
+			{
+				rel: "alternate icon",
+				href: "/favicon.ico",
+			},
+		],
+	}),
 
-  shellComponent: RootDocument,
-})
+	shellComponent: RootDocument,
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <Header />
-        <main className="mx-auto max-w-6xl px-6 py-10">{children}</main>
-        <Scripts />
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<head>
+				<HeadContent />
+			</head>
+			<body>
+				<Header />
+				<main className="mx-auto max-w-6xl px-6 py-10">{children}</main>
+				<Scripts />
+			</body>
+		</html>
+	);
 }

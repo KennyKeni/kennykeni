@@ -1,49 +1,57 @@
-import { Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { getProjectBySlug } from "@/data/portfolio";
 
-import { createFileRoute } from '@tanstack/react-router'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-
-export const Route = createFileRoute('/projects/breast-cancer-cnn')({
-  component: BreastCancerCnnPage,
-})
+export const Route = createFileRoute("/projects/breast-cancer-cnn")({
+	component: BreastCancerCnnPage,
+});
 
 function BreastCancerCnnPage() {
-  return (
-    <article className="space-y-8">
-      <header className="space-y-4">
-        <p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
-          Project / Oct 2024 - Dec 2024
-        </p>
-        <h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">
-          Breast Cancer Detection with CNN
-        </h1>
-        <div className="flex flex-wrap gap-2">
-          {['Python', 'PyTorch', 'Pandas', 'scikit-learn'].map((tag) => (
-            <Badge key={tag} variant="outline" className="font-pixel-line rounded-none text-[10px] uppercase">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </header>
+	const project = getProjectBySlug("breast-cancer-cnn");
+	if (!project) {
+		throw new Error("Missing project data for slug: breast-cancer-cnn");
+	}
 
-      <Separator />
+	return (
+		<article className="space-y-8">
+			<header className="space-y-4">
+				<p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
+					{project.periodLabel}
+				</p>
+				<h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">
+					{project.title}
+				</h1>
+				<div className="flex flex-wrap gap-2">
+					{project.tags.map((tag) => (
+						<Badge
+							key={tag}
+							variant="outline"
+							className="font-pixel-line rounded-none text-[10px] uppercase"
+						>
+							{tag}
+						</Badge>
+					))}
+				</div>
+			</header>
 
-      <ul className="space-y-2">
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Trained a CNN model for breast cancer image analysis and reached 82% detection accuracy.
-        </li>
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Applied transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%.
-        </li>
-      </ul>
+			<Separator />
 
-      <Link
-        to="/projects"
-        className="font-pixel-line inline-block border border-border px-3 py-2 text-[10px] tracking-wider uppercase hover:border-foreground"
-      >
-        Back To Projects
-      </Link>
-    </article>
-  )
+			<ul className="space-y-2">
+				{project.bullets.map((bullet) => (
+					<li
+						key={bullet}
+						className="font-pixel-grid text-xs leading-6 text-muted-foreground"
+					>
+						- {bullet}
+					</li>
+				))}
+			</ul>
+
+			<Button asChild variant="primary" size="sm">
+				<Link to="/projects">Back To Projects</Link>
+			</Button>
+		</article>
+	);
 }

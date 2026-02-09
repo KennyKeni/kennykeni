@@ -1,55 +1,57 @@
-import { Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { getProjectBySlug } from "@/data/portfolio";
 
-import { createFileRoute } from '@tanstack/react-router'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-
-export const Route = createFileRoute('/projects/aglaea')({
-  component: AglaeaPage,
-})
+export const Route = createFileRoute("/projects/aglaea")({
+	component: AglaeaPage,
+});
 
 function AglaeaPage() {
-  return (
-    <article className="space-y-8">
-      <header className="space-y-4">
-        <p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
-          Project / Nov 2024 - Present
-        </p>
-        <h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">Aglaea</h1>
-        <div className="flex flex-wrap gap-2">
-          {['TypeScript', 'SvelteKit', 'Elysia', 'PostgreSQL', 'Kafka', 'Cloudflare Workers'].map(
-            (tag) => (
-              <Badge key={tag} variant="outline" className="font-pixel-line rounded-none text-[10px] uppercase">
-                {tag}
-              </Badge>
-            ),
-          )}
-        </div>
-      </header>
+	const project = getProjectBySlug("aglaea");
+	if (!project) {
+		throw new Error("Missing project data for slug: aglaea");
+	}
 
-      <Separator />
+	return (
+		<article className="space-y-8">
+			<header className="space-y-4">
+				<p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
+					{project.periodLabel}
+				</p>
+				<h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">
+					{project.title}
+				</h1>
+				<div className="flex flex-wrap gap-2">
+					{project.tags.map((tag) => (
+						<Badge
+							key={tag}
+							variant="outline"
+							className="font-pixel-line rounded-none text-[10px] uppercase"
+						>
+							{tag}
+						</Badge>
+					))}
+				</div>
+			</header>
 
-      <ul className="space-y-2">
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Built a production content platform supporting a gaming community with 500+ concurrent users.
-        </li>
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Implemented transactional outbox publishing domain events to Kafka for RAG embedding invalidation.
-        </li>
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Built Cloudflare Worker upload pipeline to R2 with JWT auth and strict file validation.
-        </li>
-        <li className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-          - Designed trigram search and background workers with FOR UPDATE SKIP LOCKED for safe polling.
-        </li>
-      </ul>
+			<Separator />
 
-      <Link
-        to="/projects"
-        className="font-pixel-line inline-block border border-border px-3 py-2 text-[10px] tracking-wider uppercase hover:border-foreground"
-      >
-        Back To Projects
-      </Link>
-    </article>
-  )
+			<ul className="space-y-2">
+				{project.bullets.map((bullet) => (
+					<li
+						key={bullet}
+						className="font-pixel-grid text-xs leading-6 text-muted-foreground"
+					>
+						- {bullet}
+					</li>
+				))}
+			</ul>
+
+			<Button asChild variant="primary" size="sm">
+				<Link to="/projects">Back To Projects</Link>
+			</Button>
+		</article>
+	);
 }
