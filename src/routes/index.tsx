@@ -1,220 +1,115 @@
-import { useState, useMemo } from 'react'
-import { marked } from 'marked'
+import { Link } from '@tanstack/react-router'
 
 import { createFileRoute } from '@tanstack/react-router'
-import { allJobs, allEducations } from 'content-collections'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card'
-
-import ResumeAssistant from '@/components/ResumeAssistant'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: Home,
 })
 
-function App() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+const featuredProjects = [
+  {
+    to: '/projects/nebula-console',
+    title: 'Nebula Console',
+    summary: 'Operational dashboard for distributed teams and live incident tracking.',
+    tags: ['React', 'WebSocket', 'Observability'],
+  },
+  {
+    to: '/projects/supply-sync',
+    title: 'Supply Sync',
+    summary: 'Inventory planning system focused on low-latency forecasting and approvals.',
+    tags: ['TypeScript', 'Edge APIs', 'Analytics'],
+  },
+  {
+    to: '/projects/atlas-notes',
+    title: 'Atlas Notes',
+    summary: 'Minimal writing workspace with blocks, backlinks, and publication pipelines.',
+    tags: ['Editor', 'Search', 'Design System'],
+  },
+] as const
 
-  // Get unique tags from all jobs
-  const allTags = useMemo(() => {
-    const tags = new Set<string>()
-    allJobs.forEach((job) => {
-      job.tags.forEach((tag) => tags.add(tag))
-    })
-    return Array.from(tags).sort()
-  }, [])
-
-  // Filter jobs based on selected tags
-  const filteredJobs = useMemo(() => {
-    if (selectedTags.length === 0) return allJobs
-    return allJobs.filter((job) =>
-      selectedTags.some((tag) => job.tags.includes(tag)),
-    )
-  }, [selectedTags])
-
+function Home() {
   return (
-    <>
-      <ResumeAssistant />
-      <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100">
-        <div className="flex">
-          {/* Sidebar with filters */}
-          <div className="w-72 min-h-screen bg-white border-r shadow-sm p-8 sticky top-0">
-            <h3 className="text-lg font-semibold mb-6 text-gray-900">
-              Skills & Technologies
-            </h3>
-            <div className="space-y-4">
-              {allTags.map((tag) => (
-                <div key={tag} className="flex items-center space-x-3 group">
-                  <Checkbox
-                    id={tag}
-                    checked={selectedTags.includes(tag)}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setSelectedTags([...selectedTags, tag])
-                      } else {
-                        setSelectedTags(selectedTags.filter((t) => t !== tag))
-                      }
-                    }}
-                    className="data-[state=checked]:bg-blue-600"
-                  />
-                  <label
-                    htmlFor={tag}
-                    className="text-sm font-medium leading-none text-gray-700 group-hover:text-gray-900 transition-colors cursor-pointer"
-                  >
-                    {tag}
-                  </label>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Main content */}
-          <div className="flex-1 p-8 lg:p-12">
-            <div className="max-w-4xl mx-auto space-y-12">
-              <div className="text-center space-y-4">
-                <h1 className="text-5xl font-bold bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                  My Resume
-                </h1>
-                <p className="text-gray-600 text-lg">
-                  Professional Experience & Education
-                </p>
-                <Separator className="mt-8" />
-              </div>
-
-              {/* Career Summary */}
-              <Card className="border-0 shadow-lg bg-white/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-gray-900">
-                    Career Summary
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-8">
-                    <p className="text-gray-700 flex-1 leading-relaxed">
-                      I am a passionate and driven professional seeking
-                      opportunities that will leverage my extensive experience
-                      in frontend development while providing continuous growth
-                      and learning opportunities. My goal is to contribute to
-                      innovative projects that challenge me to expand my skill
-                      set and make meaningful impacts through technology.
-                    </p>
-                    <img
-                      src="/headshot-on-white.jpg"
-                      alt="Professional headshot"
-                      className="w-44 h-52 rounded-2xl object-cover shadow-md transition-transform hover:scale-105"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Work Experience */}
-              <section className="space-y-6">
-                <h2 className="text-3xl font-semibold text-gray-900">
-                  Work Experience
-                </h2>
-                <div className="space-y-6">
-                  {filteredJobs.map((job) => (
-                    <Card
-                      key={job.jobTitle}
-                      className="border-0 shadow-md hover:shadow-lg transition-shadow"
-                    >
-                      <CardHeader>
-                        <div className="flex justify-between items-start">
-                          <div className="space-y-2">
-                            <CardTitle className="text-xl text-gray-900">
-                              {job.jobTitle}
-                            </CardTitle>
-                            <p className="text-blue-600 font-medium">
-                              {job.company} - {job.location}
-                            </p>
-                          </div>
-                          <Badge variant="secondary" className="text-sm">
-                            {job.startDate} - {job.endDate || 'Present'}
-                          </Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 mb-6 leading-relaxed">
-                          {job.summary}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {job.tags.map((tag) => (
-                            <HoverCard key={tag}>
-                              <HoverCardTrigger>
-                                <Badge
-                                  variant="outline"
-                                  className="hover:bg-gray-100 transition-colors cursor-pointer"
-                                >
-                                  {tag}
-                                </Badge>
-                              </HoverCardTrigger>
-                              <HoverCardContent className="w-64">
-                                <p className="text-sm text-gray-600">
-                                  Experience with {tag} in professional
-                                  development
-                                </p>
-                              </HoverCardContent>
-                            </HoverCard>
-                          ))}
-                        </div>
-                        {job.content && (
-                          <div
-                            className="mt-6 text-gray-700 prose prose-sm max-w-none"
-                            dangerouslySetInnerHTML={{
-                              __html: marked(job.content),
-                            }}
-                          />
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              {/* Education */}
-              <section className="space-y-6">
-                <h2 className="text-3xl font-semibold text-gray-900">
-                  Education
-                </h2>
-                <div className="space-y-6">
-                  {allEducations.map((education) => (
-                    <Card
-                      key={education.school}
-                      className="border-0 shadow-md hover:shadow-lg transition-shadow"
-                    >
-                      <CardHeader>
-                        <CardTitle className="text-xl text-gray-900">
-                          {education.school}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          {education.summary}
-                        </p>
-                        {education.content && (
-                          <div
-                            className="mt-6 text-gray-700 prose prose-sm max-w-none"
-                            dangerouslySetInnerHTML={{
-                              __html: marked(education.content),
-                            }}
-                          />
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-            </div>
-          </div>
+    <div className="space-y-10">
+      <section className="space-y-6">
+        <p className="font-pixel-line text-xs tracking-[0.22em] text-muted-foreground uppercase">
+          Product-Focused Frontend Engineer
+        </p>
+        <h1 className="font-pixel-square text-4xl tracking-tight text-foreground uppercase md:text-6xl">
+          Minimal Interfaces.
+          <br />
+          Sharp Systems.
+        </h1>
+        <p className="max-w-2xl font-pixel-grid text-sm leading-7 text-muted-foreground">
+          I design and build clean product surfaces with strong information hierarchy,
+          fast interaction loops, and maintainable frontend architecture.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            to="/projects"
+            className="font-pixel-circle border border-foreground bg-foreground px-4 py-3 text-xs tracking-[0.16em] text-background uppercase"
+          >
+            View Projects
+          </Link>
+          <a
+            href="mailto:hello@example.com"
+            className="font-pixel-circle border border-border px-4 py-3 text-xs tracking-[0.16em] text-foreground uppercase"
+          >
+            Contact
+          </a>
         </div>
-      </div>
-    </>
+      </section>
+
+      <Separator />
+
+      <section className="space-y-5">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="font-pixel-triangle text-xl tracking-wider uppercase">
+            Featured Example Projects
+          </h2>
+          <Link
+            to="/projects"
+            className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase hover:text-foreground"
+          >
+            See all
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <Card key={project.title} className="rounded-none border border-border shadow-none">
+              <CardHeader className="space-y-4">
+                <CardTitle className="font-pixel-square text-lg tracking-wide uppercase">
+                  {project.title}
+                </CardTitle>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="font-pixel-line rounded-none px-2 py-1 text-[10px] tracking-wider uppercase"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="font-pixel-grid text-xs leading-6 text-muted-foreground">
+                  {project.summary}
+                </p>
+                <Link
+                  to={project.to}
+                  className="font-pixel-line inline-block border border-border px-3 py-2 text-[10px] tracking-wider uppercase hover:border-foreground"
+                >
+                  Open Case Study
+                </Link>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
