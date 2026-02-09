@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router'
 
 import { createFileRoute } from '@tanstack/react-router'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const Route = createFileRoute('/projects/')({
   component: Projects,
@@ -10,28 +10,28 @@ export const Route = createFileRoute('/projects/')({
 
 const projects = [
   {
-    to: '/projects/nebula-console',
-    title: 'Nebula Console',
-    status: 'Launched',
+    to: '/projects/agentic-rag',
+    title: 'Agentic RAG',
+    status: 'In Progress',
     summary:
-      'A live operations dashboard that centralizes incidents, ownership, and timeline views.',
-    stack: ['React', 'TanStack Query', 'WebSocket'],
+      'Agentic RAG backend with semantic/hybrid retrieval, reranking, and low-cost VPS deployment.',
+    stack: ['Python', 'Go', 'FastAPI', 'LlamaIndex', 'Qdrant'],
   },
   {
-    to: '/projects/supply-sync',
-    title: 'Supply Sync',
-    status: 'In Production',
+    to: '/projects/aglaea',
+    title: 'Aglaea',
+    status: 'Production',
     summary:
-      'An inventory command center for planning, variance tracking, and threshold automation.',
-    stack: ['TypeScript', 'Server Functions', 'Charts'],
+      'Gaming content platform with rich text authoring, outbox-to-Kafka events, and edge uploads.',
+    stack: ['TypeScript', 'SvelteKit', 'PostgreSQL', 'Kafka', 'Cloudflare Workers'],
   },
   {
-    to: '/projects/atlas-notes',
-    title: 'Atlas Notes',
-    status: 'Beta',
+    to: '/projects/breast-cancer-cnn',
+    title: 'Breast Cancer Detection with CNN',
+    status: 'Completed',
     summary:
-      'A publishing-focused writing app with linked references and clean authoring workflows.',
-    stack: ['Rich Text', 'Search', 'Content API'],
+      'Medical imaging classifier using transfer learning with EfficientNet and Inception-ResNet-v2.',
+    stack: ['Python', 'PyTorch', 'Pandas', 'scikit-learn'],
   },
 ] as const
 
@@ -42,9 +42,7 @@ function Projects() {
         <p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
           Projects Directory
         </p>
-        <h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">
-          Example Projects
-        </h1>
+        <h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">Projects</h1>
       </section>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -75,14 +73,12 @@ function Projects() {
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
-              <p className="font-pixel-grid text-xs leading-6 text-muted-foreground">
-                {project.summary}
-              </p>
+              <p className="font-pixel-grid text-xs leading-6 text-muted-foreground">{project.summary}</p>
               <Link
                 to={project.to}
                 className="font-pixel-line inline-block border border-border px-3 py-2 text-[10px] tracking-wider uppercase hover:border-foreground"
               >
-                Read Case Study
+                View Project
               </Link>
             </CardContent>
           </Card>

@@ -11,9 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
-import { Route as ProjectsSupplySyncRouteImport } from './routes/projects.supply-sync'
-import { Route as ProjectsNebulaConsoleRouteImport } from './routes/projects.nebula-console'
-import { Route as ProjectsAtlasNotesRouteImport } from './routes/projects.atlas-notes'
+import { Route as ProjectsBreastCancerCnnRouteImport } from './routes/projects.breast-cancer-cnn'
+import { Route as ProjectsAglaeaRouteImport } from './routes/projects.aglaea'
+import { Route as ProjectsAgenticRagRouteImport } from './routes/projects.agentic-rag'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,73 +25,73 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsSupplySyncRoute = ProjectsSupplySyncRouteImport.update({
-  id: '/projects/supply-sync',
-  path: '/projects/supply-sync',
+const ProjectsBreastCancerCnnRoute = ProjectsBreastCancerCnnRouteImport.update({
+  id: '/projects/breast-cancer-cnn',
+  path: '/projects/breast-cancer-cnn',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsNebulaConsoleRoute = ProjectsNebulaConsoleRouteImport.update({
-  id: '/projects/nebula-console',
-  path: '/projects/nebula-console',
+const ProjectsAglaeaRoute = ProjectsAglaeaRouteImport.update({
+  id: '/projects/aglaea',
+  path: '/projects/aglaea',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsAtlasNotesRoute = ProjectsAtlasNotesRouteImport.update({
-  id: '/projects/atlas-notes',
-  path: '/projects/atlas-notes',
+const ProjectsAgenticRagRoute = ProjectsAgenticRagRouteImport.update({
+  id: '/projects/agentic-rag',
+  path: '/projects/agentic-rag',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/projects/atlas-notes': typeof ProjectsAtlasNotesRoute
-  '/projects/nebula-console': typeof ProjectsNebulaConsoleRoute
-  '/projects/supply-sync': typeof ProjectsSupplySyncRoute
+  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
+  '/projects/aglaea': typeof ProjectsAglaeaRoute
+  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/projects/atlas-notes': typeof ProjectsAtlasNotesRoute
-  '/projects/nebula-console': typeof ProjectsNebulaConsoleRoute
-  '/projects/supply-sync': typeof ProjectsSupplySyncRoute
+  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
+  '/projects/aglaea': typeof ProjectsAglaeaRoute
+  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/projects/atlas-notes': typeof ProjectsAtlasNotesRoute
-  '/projects/nebula-console': typeof ProjectsNebulaConsoleRoute
-  '/projects/supply-sync': typeof ProjectsSupplySyncRoute
+  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
+  '/projects/aglaea': typeof ProjectsAglaeaRoute
+  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/projects/atlas-notes'
-    | '/projects/nebula-console'
-    | '/projects/supply-sync'
+    | '/projects/agentic-rag'
+    | '/projects/aglaea'
+    | '/projects/breast-cancer-cnn'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/projects/atlas-notes'
-    | '/projects/nebula-console'
-    | '/projects/supply-sync'
+    | '/projects/agentic-rag'
+    | '/projects/aglaea'
+    | '/projects/breast-cancer-cnn'
     | '/projects'
   id:
     | '__root__'
     | '/'
-    | '/projects/atlas-notes'
-    | '/projects/nebula-console'
-    | '/projects/supply-sync'
+    | '/projects/agentic-rag'
+    | '/projects/aglaea'
+    | '/projects/breast-cancer-cnn'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProjectsAtlasNotesRoute: typeof ProjectsAtlasNotesRoute
-  ProjectsNebulaConsoleRoute: typeof ProjectsNebulaConsoleRoute
-  ProjectsSupplySyncRoute: typeof ProjectsSupplySyncRoute
+  ProjectsAgenticRagRoute: typeof ProjectsAgenticRagRoute
+  ProjectsAglaeaRoute: typeof ProjectsAglaeaRoute
+  ProjectsBreastCancerCnnRoute: typeof ProjectsBreastCancerCnnRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -111,25 +111,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/supply-sync': {
-      id: '/projects/supply-sync'
-      path: '/projects/supply-sync'
-      fullPath: '/projects/supply-sync'
-      preLoaderRoute: typeof ProjectsSupplySyncRouteImport
+    '/projects/breast-cancer-cnn': {
+      id: '/projects/breast-cancer-cnn'
+      path: '/projects/breast-cancer-cnn'
+      fullPath: '/projects/breast-cancer-cnn'
+      preLoaderRoute: typeof ProjectsBreastCancerCnnRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/nebula-console': {
-      id: '/projects/nebula-console'
-      path: '/projects/nebula-console'
-      fullPath: '/projects/nebula-console'
-      preLoaderRoute: typeof ProjectsNebulaConsoleRouteImport
+    '/projects/aglaea': {
+      id: '/projects/aglaea'
+      path: '/projects/aglaea'
+      fullPath: '/projects/aglaea'
+      preLoaderRoute: typeof ProjectsAglaeaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/atlas-notes': {
-      id: '/projects/atlas-notes'
-      path: '/projects/atlas-notes'
-      fullPath: '/projects/atlas-notes'
-      preLoaderRoute: typeof ProjectsAtlasNotesRouteImport
+    '/projects/agentic-rag': {
+      id: '/projects/agentic-rag'
+      path: '/projects/agentic-rag'
+      fullPath: '/projects/agentic-rag'
+      preLoaderRoute: typeof ProjectsAgenticRagRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -137,9 +137,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProjectsAtlasNotesRoute: ProjectsAtlasNotesRoute,
-  ProjectsNebulaConsoleRoute: ProjectsNebulaConsoleRoute,
-  ProjectsSupplySyncRoute: ProjectsSupplySyncRoute,
+  ProjectsAgenticRagRoute: ProjectsAgenticRagRoute,
+  ProjectsAglaeaRoute: ProjectsAglaeaRoute,
+  ProjectsBreastCancerCnnRoute: ProjectsBreastCancerCnnRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport

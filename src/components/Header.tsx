@@ -3,9 +3,8 @@ import { Link } from '@tanstack/react-router'
 const navItems = [
   { to: '/', label: 'Home' },
   { to: '/projects', label: 'Projects' },
-  { to: '/projects/nebula-console', label: 'Nebula Console' },
-  { to: '/projects/supply-sync', label: 'Supply Sync' },
-  { to: '/projects/atlas-notes', label: 'Atlas Notes' },
+  { to: '/projects/agentic-rag', label: 'Agentic RAG' },
+  { to: '/projects/aglaea', label: 'Aglaea' },
 ] as const
 
 export default function Header() {
@@ -16,7 +15,7 @@ export default function Header() {
           to="/"
           className="font-pixel-square text-lg tracking-wide text-foreground uppercase"
         >
-          KLIN PORTFOLIO
+          KENNY LIN
         </Link>
         <nav className="flex flex-wrap gap-2">
           {navItems.map((item) => (
@@ -26,7 +25,7 @@ export default function Header() {
               className="font-pixel-line border border-border px-3 py-2 text-xs tracking-wide uppercase text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{
                 className:
-                  'font-pixel-line border border-foreground bg-foreground px-3 py-2 text-xs tracking-wide uppercase text-background',
+                  'font-pixel-line border border-foreground bg-foreground px-3 py-2 text-xs tracking-wide uppercase !text-white',
               }}
             >
               {item.label}
