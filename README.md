@@ -1,4 +1,4 @@
-## Software Engineer | Georgia Tech CS (B.S./M.S.)
+## Some kid | Georgia Tech CS (B.S./M.S.)
 
 Building full-stack systems, distributed backend services, and ML-powered products.
 
