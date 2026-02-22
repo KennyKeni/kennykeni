@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
+import { Route as ProjectsLearnAndRouteImport } from './routes/projects.learn-and'
 import { Route as ProjectsBreastCancerCnnRouteImport } from './routes/projects.breast-cancer-cnn'
 import { Route as ProjectsAglaeaRouteImport } from './routes/projects.aglaea'
 import { Route as ProjectsAgenticRagRouteImport } from './routes/projects.agentic-rag'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsLearnAndRoute = ProjectsLearnAndRouteImport.update({
+  id: '/projects/learn-and',
+  path: '/projects/learn-and',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsBreastCancerCnnRoute = ProjectsBreastCancerCnnRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
   '/projects/aglaea': typeof ProjectsAglaeaRoute
   '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
+  '/projects/learn-and': typeof ProjectsLearnAndRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
   '/projects/aglaea': typeof ProjectsAglaeaRoute
   '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
+  '/projects/learn-and': typeof ProjectsLearnAndRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
   '/projects/aglaea': typeof ProjectsAglaeaRoute
   '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
+  '/projects/learn-and': typeof ProjectsLearnAndRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/projects/agentic-rag'
     | '/projects/aglaea'
     | '/projects/breast-cancer-cnn'
+    | '/projects/learn-and'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/projects/agentic-rag'
     | '/projects/aglaea'
     | '/projects/breast-cancer-cnn'
+    | '/projects/learn-and'
     | '/projects'
   id:
     | '__root__'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/projects/agentic-rag'
     | '/projects/aglaea'
     | '/projects/breast-cancer-cnn'
+    | '/projects/learn-and'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   ProjectsAgenticRagRoute: typeof ProjectsAgenticRagRoute
   ProjectsAglaeaRoute: typeof ProjectsAglaeaRoute
   ProjectsBreastCancerCnnRoute: typeof ProjectsBreastCancerCnnRoute
+  ProjectsLearnAndRoute: typeof ProjectsLearnAndRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -109,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects/'
       preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/learn-and': {
+      id: '/projects/learn-and'
+      path: '/projects/learn-and'
+      fullPath: '/projects/learn-and'
+      preLoaderRoute: typeof ProjectsLearnAndRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/breast-cancer-cnn': {
@@ -140,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsAgenticRagRoute: ProjectsAgenticRagRoute,
   ProjectsAglaeaRoute: ProjectsAglaeaRoute,
   ProjectsBreastCancerCnnRoute: ProjectsBreastCancerCnnRoute,
+  ProjectsLearnAndRoute: ProjectsLearnAndRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport

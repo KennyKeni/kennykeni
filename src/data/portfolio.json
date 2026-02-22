@@ -2,13 +2,11 @@
 	"person": {
 		"name": "Kenny Lin",
 		"homeEyebrow": "Resume",
-		"contactLine": "631-264-4497 | linkenny777@gmail.com | New York, NY | US Citizen"
+		"contactLine": "linkenny777@gmail.com | New York, NY"
 	},
 	"headerNav": [
 		{ "to": "/", "label": "Home" },
-		{ "to": "/projects", "label": "Projects" },
-		{ "to": "/projects/agentic-rag", "label": "Agentic RAG" },
-		{ "to": "/projects/aglaea", "label": "Aglaea" }
+		{ "to": "/projects", "label": "Projects" }
 	],
 	"home": {
 		"profileLinks": [
@@ -138,6 +136,13 @@
 				"status": "Completed",
 				"summary": "Medical imaging classifier using transfer learning with EfficientNet and Inception-ResNet-v2.",
 				"stack": ["Python", "PyTorch", "Pandas", "scikit-learn"]
+			},
+			{
+				"to": "/projects/learn-and",
+				"title": "Learn&",
+				"status": "Completed",
+				"summary": "AI-powered collaborative classroom platform that pairs students by complementary knowledge gaps for peer learning.",
+				"stack": ["TypeScript", "Next.js", "Convex", "Excalidraw", "Vercel AI SDK"]
 			}
 		]
 	},
@@ -180,6 +185,18 @@
 			"bullets": [
 				"Trained a CNN model for breast cancer image analysis and reached 82% detection accuracy.",
 				"Applied transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%."
+			]
+		},
+		{
+			"slug": "learn-and",
+			"title": "Learn&",
+			"periodLabel": "Human& Hackathon / Feb 2026",
+			"tags": ["TypeScript", "Next.js", "Convex", "Excalidraw", "Vercel AI SDK", "Tailwind CSS"],
+			"bullets": [
+				"Built a real-time collaborative classroom platform where AI agents assess student comprehension and pair students with complementary knowledge gaps for peer learning.",
+				"Implemented AI-driven check-in system that conducts 1-on-1 conversations with each student, extracts per-topic comprehension profiles, and computes optimal study group matches.",
+				"Integrated Excalidraw whiteboards with real-time sync via Convex for professor teaching, group collaboration, and AI-generated concept diagrams.",
+				"Designed AI group chat monitor that intervenes as a confused peer student to challenge misconceptions and prompt deeper understanding."
 			]
 		}
 	]
