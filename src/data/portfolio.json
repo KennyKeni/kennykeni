@@ -94,7 +94,7 @@
 			},
 			{
 				"label": "Frameworks",
-				"value": "React, Svelte, Next.js, Elysia, NestJS, FastAPI, PyTorch, TensorFlow, LlamaIndex, Tailwind"
+				"value": "React, Next.js, Svelte, Hono, Elysia, NestJS, FastAPI, PyTorch, TensorFlow, LlamaIndex, Tailwind"
 			},
 			{
 				"label": "Databases & Cloud",
