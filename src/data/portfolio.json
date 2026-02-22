@@ -94,7 +94,7 @@
 			},
 			{
 				"label": "Frameworks",
-				"value": "React, Next.js, Svelte, Hono, Elysia, NestJS, FastAPI, PyTorch, TensorFlow, LlamaIndex, Tailwind"
+				"value": "React, Next.js, Svelte, Hono, Elysia, NestJS, FastAPI, Kysely, BetterAuth, PyTorch, TensorFlow, LlamaIndex, Tailwind"
 			},
 			{
 				"label": "Databases & Cloud",
@@ -102,7 +102,7 @@
 			},
 			{
 				"label": "Tools",
-				"value": "Git, Linux, Bun, Kysely, BetterAuth, RESTful APIs, CI/CD"
+				"value": "Git, Linux, Bun, RESTful APIs, CI/CD"
 			}
 		]
 	},
