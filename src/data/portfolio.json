@@ -49,7 +49,7 @@
 				"role": "Full Stack Developer",
 				"org": "Bits of Good (Nonprofit)",
 				"location": "Atlanta, GA",
-				"period": "Jan 2024 - Present",
+				"period": "Jan 2024 - Dec 2025",
 				"bullets": [
 					"Developed a web app with iCAN to gamify medication adherence for children in clinical trials.",
 					"Implemented complex UI flows with React and Tailwind CSS to improve usability and maintainability.",
@@ -60,7 +60,7 @@
 				"role": "Machine Learning Undergraduate Researcher",
 				"org": "Intelligent Digital Communications",
 				"location": "Atlanta, GA",
-				"period": "Aug 2024 - Present",
+				"period": "Aug 2024 - Dec 2025",
 				"bullets": [
 					"Developed a near real-time system to identify and triangulate wireless users in signal-dense environments.",
 					"Applied transfer learning to Co-DETR models with PyTorch and scikit-learn, achieving 85% detection accuracy."
