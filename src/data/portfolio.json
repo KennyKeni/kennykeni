@@ -98,7 +98,7 @@
 			},
 			{
 				"label": "Databases & Cloud",
-				"value": "PostgreSQL, MongoDB, Redis, Qdrant, AWS (SQS, S3, CloudWatch), Docker"
+				"value": "PostgreSQL, MongoDB, Convex, Redis, Qdrant, AWS (SQS, S3, CloudWatch), Docker"
 			},
 			{
 				"label": "Tools",
