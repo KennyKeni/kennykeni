@@ -28,13 +28,10 @@ function Home() {
 				viewport={revealViewport}
 				transition={revealTransition}
 			>
-				<p className="font-pixel-line text-xs tracking-[0.22em] text-muted-foreground uppercase">
-					{person.homeEyebrow}
-				</p>
-				<h1 className="font-pixel-square text-4xl tracking-tight uppercase md:text-6xl">
+				<h1 className="font-pixel-square text-5xl tracking-tight uppercase md:text-7xl">
 					{person.name}
 				</h1>
-				<p className="max-w-4xl font-pixel-grid text-sm leading-7 text-muted-foreground">
+				<p className="max-w-4xl font-pixel-grid text-base leading-7 text-muted-foreground">
 					{person.contactLine}
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -58,7 +55,7 @@ function Home() {
 				viewport={revealViewport}
 				transition={revealTransition}
 			>
-				<h2 className="font-pixel-triangle text-xl tracking-wider uppercase">
+				<h2 className="font-pixel-triangle text-2xl tracking-wider uppercase">
 					Education
 				</h2>
 				<div className="space-y-4">
@@ -73,7 +70,7 @@ function Home() {
 							<Card className="rounded-none border border-border shadow-none">
 								<CardHeader className="space-y-3">
 									<div className="flex flex-wrap items-start justify-between gap-3">
-										<CardTitle className="font-pixel-square text-base tracking-wide uppercase">
+										<CardTitle className="font-pixel-square text-lg tracking-wide uppercase">
 											{item.school}
 										</CardTitle>
 										<Badge
@@ -83,12 +80,12 @@ function Home() {
 											{item.period}
 										</Badge>
 									</div>
-									<p className="font-pixel-line text-xs tracking-wide uppercase text-muted-foreground">
+									<p className="font-pixel-line text-sm tracking-wide uppercase text-muted-foreground">
 										{item.location}
 									</p>
 								</CardHeader>
 								<CardContent>
-									<p className="font-pixel-grid text-xs leading-6 text-muted-foreground">
+									<p className="font-pixel-grid text-sm leading-6 text-muted-foreground">
 										{item.degree}
 									</p>
 								</CardContent>
@@ -107,7 +104,7 @@ function Home() {
 				viewport={revealViewport}
 				transition={revealTransition}
 			>
-				<h2 className="font-pixel-triangle text-xl tracking-wider uppercase">
+				<h2 className="font-pixel-triangle text-2xl tracking-wider uppercase">
 					Experience
 				</h2>
 				<div className="space-y-4">
@@ -122,7 +119,7 @@ function Home() {
 							<Card className="rounded-none border border-border shadow-none">
 								<CardHeader className="space-y-3">
 									<div className="flex flex-wrap items-start justify-between gap-3">
-										<CardTitle className="font-pixel-square text-base tracking-wide uppercase">
+										<CardTitle className="font-pixel-square text-lg tracking-wide uppercase">
 											{item.role}
 										</CardTitle>
 										<Badge
@@ -132,7 +129,7 @@ function Home() {
 											{item.period}
 										</Badge>
 									</div>
-									<p className="font-pixel-line text-xs tracking-wide uppercase text-muted-foreground">
+									<p className="font-pixel-line text-sm tracking-wide uppercase text-muted-foreground">
 										{item.org} | {item.location}
 									</p>
 								</CardHeader>
@@ -141,7 +138,7 @@ function Home() {
 										{item.bullets.map((bullet) => (
 											<li
 												key={bullet}
-												className="font-pixel-grid text-xs leading-6 text-muted-foreground"
+												className="font-pixel-grid text-sm leading-6 text-muted-foreground"
 											>
 												- {bullet}
 											</li>
@@ -164,7 +161,7 @@ function Home() {
 				transition={revealTransition}
 			>
 				<div className="flex items-end justify-between gap-4">
-					<h2 className="font-pixel-triangle text-xl tracking-wider uppercase">
+					<h2 className="font-pixel-triangle text-2xl tracking-wider uppercase">
 						Featured Projects
 					</h2>
 					<Button
@@ -187,7 +184,7 @@ function Home() {
 						>
 							<Card className="h-full rounded-none border border-border shadow-none">
 								<CardHeader className="space-y-4">
-									<CardTitle className="font-pixel-square text-lg tracking-wide uppercase">
+									<CardTitle className="font-pixel-square text-xl tracking-wide uppercase">
 										{project.title}
 									</CardTitle>
 									<div className="flex flex-wrap gap-2">
@@ -203,7 +200,7 @@ function Home() {
 									</div>
 								</CardHeader>
 								<CardContent className="flex flex-1 flex-col justify-between gap-6">
-									<p className="font-pixel-grid flex-1 text-xs leading-6 text-muted-foreground">
+									<p className="font-pixel-grid flex-1 text-sm leading-6 text-muted-foreground">
 										{project.summary}
 									</p>
 									<Button asChild variant="primary" size="sm">
@@ -225,7 +222,7 @@ function Home() {
 				viewport={revealViewport}
 				transition={revealTransition}
 			>
-				<h2 className="font-pixel-triangle text-xl tracking-wider uppercase">
+				<h2 className="font-pixel-triangle text-2xl tracking-wider uppercase">
 					Technical Skills
 				</h2>
 				<div className="grid gap-4 md:grid-cols-2">
@@ -239,12 +236,12 @@ function Home() {
 						>
 							<Card className="rounded-none border border-border shadow-none">
 								<CardHeader>
-									<CardTitle className="font-pixel-square text-sm tracking-wide uppercase">
+									<CardTitle className="font-pixel-square text-base tracking-wide uppercase">
 										{item.label}
 									</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<p className="font-pixel-grid text-xs leading-6 text-muted-foreground">
+									<p className="font-pixel-grid text-sm leading-6 text-muted-foreground">
 										{item.value}
 									</p>
 								</CardContent>
