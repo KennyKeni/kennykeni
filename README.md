@@ -6,12 +6,12 @@ Building full-stack systems, distributed backend services, and ML-powered produc
 - Email: [linkenny777@gmail.com](mailto:linkenny777@gmail.com)
 - LinkedIn: [linkedin.com/in/kennylin344](https://linkedin.com/in/kennylin344)
 
-## Selected Projects
+## Some Projects ( . _ . )
 
 - **Agentic RAG** - FastAPI backend with semantic + hybrid retrieval and reranking; reduced infra cost by 60%.
 - **Aglaea** - Production content platform (500+ concurrent users) with Kafka outbox and Cloudflare edge uploads.
-- **Learn&** - AI-powered classroom platform that pairs students by complementary knowledge gaps for peer learning. Built at Human& Hackathon.
 - **Breast Cancer Detection with CNN** - PyTorch image classifier with 82% accuracy and +20% transfer-learning gain.
+- **Learn&** - AI-powered classroom platform that pairs students by complementary knowledge gaps for peer learning. Built at Human& Hackathon.
 
 ## Tech Stack
 
