@@ -15,11 +15,11 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "Klin Portfolio",
+				title: "Kenny's Portfolio",
 			},
 			{
 				name: "description",
-				content: "Minimal pixel-themed portfolio with project case studies.",
+				content: "Projects, experiments, and things I've built along the way.",
 			},
 		],
 		links: [

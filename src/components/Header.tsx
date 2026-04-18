@@ -70,14 +70,14 @@ export default function Header() {
 							<HoverCardContent
 								align="end"
 								sideOffset={10}
-								className="w-56 rounded-none border-border p-2"
+								className="w-72 rounded-none border-border p-2"
 							>
 								<div className="flex flex-col gap-1">
 									<Button
 										asChild
 										variant="nav"
 										size="md"
-										className="w-full justify-start"
+										className="w-full justify-start font-bold"
 									>
 										<Link
 											to={projectsRoot.to}
@@ -95,7 +95,7 @@ export default function Header() {
 											asChild
 											variant="nav"
 											size="md"
-											className="w-full justify-start"
+											className="w-full justify-start font-bold"
 										>
 											<Link
 												to={item.to}
