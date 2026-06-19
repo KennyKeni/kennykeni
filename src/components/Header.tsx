@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { allProjects } from "content-collections";
 import { ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -7,15 +8,10 @@ import {
 	HoverCardContent,
 	HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import {
-	getHeaderNav,
-	getPersonData,
-	getProjectsIndexData,
-} from "@/data/portfolio";
+import { getHeaderNav, getPersonData } from "@/data/portfolio";
 
 const navItems = getHeaderNav();
 const person = getPersonData();
-const projectsIndex = getProjectsIndexData();
 
 export default function Header() {
 	const pathname = useRouterState({
@@ -89,22 +85,23 @@ export default function Header() {
 											All Projects
 										</Link>
 									</Button>
-									{projectsIndex.items.map((item) => (
+									{allProjects.map((project) => (
 										<Button
-											key={item.to}
+											key={project.slug}
 											asChild
 											variant="nav"
 											size="md"
 											className="w-full justify-start font-bold"
 										>
 											<Link
-												to={item.to}
+												to="/projects/$slug"
+												params={{ slug: project.slug }}
 												activeProps={{
 													className:
 														"!border-foreground !bg-foreground !text-white hover:!text-white",
 												}}
 											>
-												{item.title}
+												{project.title}
 											</Link>
 										</Button>
 									))}

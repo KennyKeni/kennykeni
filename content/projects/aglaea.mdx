@@ -1,0 +1,26 @@
+---
+slug: "aglaea"
+title: "Aglaea"
+periodLabel: "Project / Nov 2024 - Present"
+tags:
+  - "TypeScript"
+  - "SvelteKit"
+  - "Elysia"
+  - "PostgreSQL"
+  - "Kafka"
+  - "Cloudflare Workers"
+status: "Production"
+summary: "Gaming content platform with rich text authoring, outbox-to-Kafka events, and edge uploads."
+stack:
+  - "TypeScript"
+  - "SvelteKit"
+  - "PostgreSQL"
+  - "Kafka"
+  - "Cloudflare Workers"
+featured: true
+---
+
+- Built a production content platform supporting a gaming community with 500+ concurrent users.
+- Implemented transactional outbox publishing domain events to Kafka for RAG embedding invalidation.
+- Built Cloudflare Worker upload pipeline to R2 with JWT auth and strict file validation.
+- Designed trigram search and background workers with FOR UPDATE SKIP LOCKED for safe polling.

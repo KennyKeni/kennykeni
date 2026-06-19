@@ -27,32 +27,9 @@ const experienceSchema = z.object({
 	bullets: z.array(z.string()),
 });
 
-const featuredProjectSchema = z.object({
-	to: z.string(),
-	title: z.string(),
-	summary: z.string(),
-	tags: z.array(z.string()),
-});
-
 const skillSchema = z.object({
 	label: z.string(),
 	value: z.string(),
-});
-
-const projectsIndexItemSchema = z.object({
-	to: z.string(),
-	title: z.string(),
-	status: z.string(),
-	summary: z.string(),
-	stack: z.array(z.string()),
-});
-
-const projectDetailSchema = z.object({
-	slug: z.string(),
-	title: z.string(),
-	periodLabel: z.string(),
-	tags: z.array(z.string()),
-	bullets: z.array(z.string()),
 });
 
 const portfolioSchema = z.object({
@@ -66,22 +43,11 @@ const portfolioSchema = z.object({
 		profileLinks: z.array(linkSchema),
 		education: z.array(educationSchema),
 		experiences: z.array(experienceSchema),
-		featuredProjects: z.array(featuredProjectSchema),
 		skills: z.array(skillSchema),
 	}),
-	projectsIndex: z.object({
-		eyebrow: z.string(),
-		title: z.string(),
-		items: z.array(projectsIndexItemSchema),
-	}),
-	projectDetails: z.array(projectDetailSchema),
 });
 
 const portfolioData = portfolioSchema.parse(portfolioRaw);
-
-export type PortfolioData = z.infer<typeof portfolioSchema>;
-export type HeaderNavItem = z.infer<typeof routeLinkSchema>;
-export type ProjectDetail = z.infer<typeof projectDetailSchema>;
 
 export function getPortfolioData() {
 	return portfolioData;
@@ -97,12 +63,4 @@ export function getHomeData() {
 
 export function getPersonData() {
 	return portfolioData.person;
-}
-
-export function getProjectsIndexData() {
-	return portfolioData.projectsIndex;
-}
-
-export function getProjectBySlug(slug: string) {
-	return portfolioData.projectDetails.find((project) => project.slug === slug);
 }

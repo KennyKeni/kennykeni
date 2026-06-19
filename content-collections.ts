@@ -1,36 +1,31 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
+import { compileMDX } from '@content-collections/mdx'
 import { z } from 'zod'
 
-const jobs = defineCollection({
-  name: 'jobs',
-  directory: 'content/jobs',
-  include: '**/*.md',
+const projects = defineCollection({
+  name: 'projects',
+  directory: 'content/projects',
+  include: '**/*.mdx',
   schema: z.object({
-    jobTitle: z.string(),
-    summary: z.string(),
-    startDate: z.string(),
-    endDate: z.string().optional(),
-    company: z.string(),
-    location: z.string(),
+    slug: z.string(),
+    title: z.string(),
+    periodLabel: z.string(),
     tags: z.array(z.string()),
+    status: z.string(),
+    summary: z.string(),
+    stack: z.array(z.string()),
+    featured: z.boolean().default(false),
     content: z.string(),
   }),
-})
-
-const education = defineCollection({
-  name: 'education',
-  directory: 'content/education',
-  include: '**/*.md',
-  schema: z.object({
-    school: z.string(),
-    summary: z.string(),
-    startDate: z.string(),
-    endDate: z.string().optional(),
-    tags: z.array(z.string()),
-    content: z.string(),
-  }),
+  transform: async (document, context) => {
+    const mdx = await compileMDX(context, document)
+    return {
+      ...document,
+      mdx,
+    }
+  },
 })
 
 export default defineConfig({
-  collections: [jobs, education],
+  collections: [projects],
 })

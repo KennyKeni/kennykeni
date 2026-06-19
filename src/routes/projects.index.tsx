@@ -1,33 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { allProjects } from "content-collections";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getProjectsIndexData } from "@/data/portfolio";
 
 export const Route = createFileRoute("/projects/")({
 	component: Projects,
 });
 
-const projectsIndexData = getProjectsIndexData();
-
 function Projects() {
-	const { eyebrow, title, items } = projectsIndexData;
-
 	return (
 		<div className="space-y-8">
 			<section className="space-y-4">
 				<p className="font-pixel-line text-xs tracking-[0.2em] text-muted-foreground uppercase">
-					{eyebrow}
+					Projects Directory
 				</p>
 				<h1 className="font-pixel-square text-3xl tracking-wide uppercase md:text-5xl">
-					{title}
+					Projects
 				</h1>
 			</section>
 
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-				{items.map((project) => (
+				{allProjects.map((project) => (
 					<Card
-						key={project.title}
+						key={project.slug}
 						className="rounded-none border border-border shadow-none"
 					>
 						<CardHeader className="space-y-3">
@@ -59,7 +55,9 @@ function Projects() {
 								{project.summary}
 							</p>
 							<Button asChild variant="primary" size="sm">
-								<Link to={project.to}>View Project</Link>
+								<Link to="/projects/$slug" params={{ slug: project.slug }}>
+									View Project
+								</Link>
 							</Button>
 						</CardContent>
 					</Card>

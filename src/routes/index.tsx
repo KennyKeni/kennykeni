@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { allProjects } from "content-collections";
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,12 +13,12 @@ export const Route = createFileRoute("/")({
 
 const homeData = getHomeData();
 const person = getPersonData();
+const featuredProjects = allProjects.filter((project) => project.featured);
 const revealViewport = { once: true, amount: 0.2 };
-const revealTransition = { duration: 0.55, ease: [0.16, 1, 0.3, 1] };
+const revealTransition = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const };
 
 function Home() {
-	const { profileLinks, education, experiences, featuredProjects, skills } =
-		homeData;
+	const { profileLinks, education, experiences, skills } = homeData;
 
 	return (
 		<div className="space-y-10">
@@ -176,7 +177,7 @@ function Home() {
 				<div className="grid gap-4 md:grid-cols-3 md:[grid-auto-rows:1fr]">
 					{featuredProjects.map((project, index) => (
 						<motion.div
-							key={project.title}
+							key={project.slug}
 							initial={{ opacity: 0, y: 18 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={revealViewport}
@@ -204,7 +205,9 @@ function Home() {
 										{project.summary}
 									</p>
 									<Button asChild variant="primary" size="sm">
-										<Link to={project.to}>View Project</Link>
+										<Link to="/projects/$slug" params={{ slug: project.slug }}>
+											View Project
+										</Link>
 									</Button>
 								</CardContent>
 							</Card>

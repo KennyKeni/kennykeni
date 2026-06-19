@@ -2,7 +2,7 @@
 	"person": {
 		"name": "Kenny Lin",
 		"homeEyebrow": "Resume",
-		"contactLine": "linkenny777@gmail.com | New York, NY"
+		"contactLine": "hello@kennykeni.com | New York, NY"
 	},
 	"headerNav": [
 		{ "to": "/", "label": "Home" },
@@ -67,26 +67,6 @@
 				]
 			}
 		],
-		"featuredProjects": [
-			{
-				"to": "/projects/agentic-rag",
-				"title": "Agentic RAG",
-				"summary": "Agentic FastAPI backend using vector + hybrid retrieval, reranking, and cost-efficient VPS deployment.",
-				"tags": ["Python", "FastAPI", "LlamaIndex", "Qdrant"]
-			},
-			{
-				"to": "/projects/aglaea",
-				"title": "Aglaea",
-				"summary": "Production content platform with event-driven architecture, Kafka outbox, and Cloudflare edge uploads.",
-				"tags": ["TypeScript", "SvelteKit", "PostgreSQL", "Kafka"]
-			},
-			{
-				"to": "/projects/breast-cancer-cnn",
-				"title": "Breast Cancer Detection with CNN",
-				"summary": "PyTorch transfer-learning pipeline for medical image classification with strong performance on limited data.",
-				"tags": ["PyTorch", "CNN", "EfficientNet", "scikit-learn"]
-			}
-		],
 		"skills": [
 			{
 				"label": "Languages",
@@ -105,99 +85,5 @@
 				"value": "Git, Linux, Bun, RESTful APIs, CI/CD"
 			}
 		]
-	},
-	"projectsIndex": {
-		"eyebrow": "Projects Directory",
-		"title": "Projects",
-		"items": [
-			{
-				"to": "/projects/agentic-rag",
-				"title": "Agentic RAG",
-				"status": "In Progress",
-				"summary": "Agentic RAG backend with semantic/hybrid retrieval, reranking, and low-cost VPS deployment.",
-				"stack": ["Python", "Go", "FastAPI", "LlamaIndex", "Qdrant"]
-			},
-			{
-				"to": "/projects/aglaea",
-				"title": "Aglaea",
-				"status": "Production",
-				"summary": "Gaming content platform with rich text authoring, outbox-to-Kafka events, and edge uploads.",
-				"stack": [
-					"TypeScript",
-					"SvelteKit",
-					"PostgreSQL",
-					"Kafka",
-					"Cloudflare Workers"
-				]
-			},
-			{
-				"to": "/projects/breast-cancer-cnn",
-				"title": "Breast Cancer Detection with CNN",
-				"status": "Completed",
-				"summary": "Medical imaging classifier using transfer learning with EfficientNet and Inception-ResNet-v2.",
-				"stack": ["Python", "PyTorch", "Pandas", "scikit-learn"]
-			},
-			{
-				"to": "/projects/learn-and",
-				"title": "Learn&",
-				"status": "Completed",
-				"summary": "AI-powered collaborative classroom platform that pairs students by complementary knowledge gaps for peer learning.",
-				"stack": ["TypeScript", "Next.js", "Convex", "Excalidraw", "Vercel AI SDK"]
-			}
-		]
-	},
-	"projectDetails": [
-		{
-			"slug": "agentic-rag",
-			"title": "Agentic RAG",
-			"periodLabel": "Project / July 2025 - Present",
-			"tags": ["Python", "Go", "FastAPI", "LlamaIndex", "Qdrant", "Docker"],
-			"bullets": [
-				"Built an agentic RAG FastAPI backend that reasons over user questions with vector retrieval.",
-				"Implemented semantic search, hybrid search, and reranking to improve answer quality.",
-				"Deployed Dockerized backend and databases to a VPS, reducing operating costs by 60%."
-			]
-		},
-		{
-			"slug": "aglaea",
-			"title": "Aglaea",
-			"periodLabel": "Project / Nov 2024 - Present",
-			"tags": [
-				"TypeScript",
-				"SvelteKit",
-				"Elysia",
-				"PostgreSQL",
-				"Kafka",
-				"Cloudflare Workers"
-			],
-			"bullets": [
-				"Built a production content platform supporting a gaming community with 500+ concurrent users.",
-				"Implemented transactional outbox publishing domain events to Kafka for RAG embedding invalidation.",
-				"Built Cloudflare Worker upload pipeline to R2 with JWT auth and strict file validation.",
-				"Designed trigram search and background workers with FOR UPDATE SKIP LOCKED for safe polling."
-			]
-		},
-		{
-			"slug": "breast-cancer-cnn",
-			"title": "Breast Cancer Detection with CNN",
-			"periodLabel": "Project / Oct 2024 - Dec 2024",
-			"tags": ["Python", "PyTorch", "Pandas", "scikit-learn"],
-			"bullets": [
-				"Trained a CNN model for breast cancer image analysis and reached 82% detection accuracy.",
-				"Applied transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%."
-			]
-		},
-		{
-			"slug": "learn-and",
-			"title": "Learn&",
-			"periodLabel": "Human& Hackathon / Feb 2026",
-			"tags": ["TypeScript", "Next.js", "Convex", "Excalidraw", "Vercel AI SDK", "Tailwind CSS"],
-			"bullets": [
-				"Built a real-time collaborative classroom platform where AI agents assess student comprehension and pair students with complementary knowledge gaps for peer learning.",
-				"Implemented AI-driven check-in system that conducts 1-on-1 conversations with each student, extracts per-topic comprehension profiles, and computes optimal study group matches.",
-				"Integrated Excalidraw whiteboards with real-time sync via Convex for professor teaching, group collaboration, and AI-generated concept diagrams.",
-				"Designed AI group chat monitor that intervenes as a confused peer student to challenge misconceptions and prompt deeper understanding."
-			]
-		}
-	]
+	}
 }

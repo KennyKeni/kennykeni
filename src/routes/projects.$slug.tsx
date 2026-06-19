@@ -1,18 +1,23 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { MDXContent } from "@content-collections/mdx/react";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { allProjects } from "content-collections";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getProjectBySlug } from "@/data/portfolio";
 
-export const Route = createFileRoute("/projects/agentic-rag")({
-	component: AgenticRagPage,
+export const Route = createFileRoute("/projects/$slug")({
+	component: ProjectPage,
+	loader: ({ params: { slug } }) => {
+		const project = allProjects.find((p) => p.slug === slug);
+		if (!project) {
+			throw notFound();
+		}
+		return project;
+	},
 });
 
-function AgenticRagPage() {
-	const project = getProjectBySlug("agentic-rag");
-	if (!project) {
-		throw new Error("Missing project data for slug: agentic-rag");
-	}
+function ProjectPage() {
+	const project = Route.useLoaderData();
 
 	return (
 		<article className="space-y-8">
@@ -38,16 +43,9 @@ function AgenticRagPage() {
 
 			<Separator />
 
-			<ul className="space-y-2">
-				{project.bullets.map((bullet) => (
-					<li
-						key={bullet}
-						className="font-pixel-grid text-xs leading-6 text-muted-foreground"
-					>
-						- {bullet}
-					</li>
-				))}
-			</ul>
+			<div className="space-y-2">
+				<MDXContent code={project.mdx} />
+			</div>
 
 			<Button asChild variant="primary" size="sm">
 				<Link to="/projects">Back To Projects</Link>

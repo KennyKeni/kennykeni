@@ -11,10 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
-import { Route as ProjectsLearnAndRouteImport } from './routes/projects.learn-and'
-import { Route as ProjectsBreastCancerCnnRouteImport } from './routes/projects.breast-cancer-cnn'
-import { Route as ProjectsAglaeaRouteImport } from './routes/projects.aglaea'
-import { Route as ProjectsAgenticRagRouteImport } from './routes/projects.agentic-rag'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -26,85 +23,39 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsLearnAndRoute = ProjectsLearnAndRouteImport.update({
-  id: '/projects/learn-and',
-  path: '/projects/learn-and',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsBreastCancerCnnRoute = ProjectsBreastCancerCnnRouteImport.update({
-  id: '/projects/breast-cancer-cnn',
-  path: '/projects/breast-cancer-cnn',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsAglaeaRoute = ProjectsAglaeaRouteImport.update({
-  id: '/projects/aglaea',
-  path: '/projects/aglaea',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsAgenticRagRoute = ProjectsAgenticRagRouteImport.update({
-  id: '/projects/agentic-rag',
-  path: '/projects/agentic-rag',
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
-  '/projects/aglaea': typeof ProjectsAglaeaRoute
-  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
-  '/projects/learn-and': typeof ProjectsLearnAndRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
-  '/projects/aglaea': typeof ProjectsAglaeaRoute
-  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
-  '/projects/learn-and': typeof ProjectsLearnAndRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/projects/agentic-rag': typeof ProjectsAgenticRagRoute
-  '/projects/aglaea': typeof ProjectsAglaeaRoute
-  '/projects/breast-cancer-cnn': typeof ProjectsBreastCancerCnnRoute
-  '/projects/learn-and': typeof ProjectsLearnAndRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/projects/agentic-rag'
-    | '/projects/aglaea'
-    | '/projects/breast-cancer-cnn'
-    | '/projects/learn-and'
-    | '/projects/'
+  fullPaths: '/' | '/projects/$slug' | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/projects/agentic-rag'
-    | '/projects/aglaea'
-    | '/projects/breast-cancer-cnn'
-    | '/projects/learn-and'
-    | '/projects'
-  id:
-    | '__root__'
-    | '/'
-    | '/projects/agentic-rag'
-    | '/projects/aglaea'
-    | '/projects/breast-cancer-cnn'
-    | '/projects/learn-and'
-    | '/projects/'
+  to: '/' | '/projects/$slug' | '/projects'
+  id: '__root__' | '/' | '/projects/$slug' | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProjectsAgenticRagRoute: typeof ProjectsAgenticRagRoute
-  ProjectsAglaeaRoute: typeof ProjectsAglaeaRoute
-  ProjectsBreastCancerCnnRoute: typeof ProjectsBreastCancerCnnRoute
-  ProjectsLearnAndRoute: typeof ProjectsLearnAndRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -124,32 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/learn-and': {
-      id: '/projects/learn-and'
-      path: '/projects/learn-and'
-      fullPath: '/projects/learn-and'
-      preLoaderRoute: typeof ProjectsLearnAndRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/breast-cancer-cnn': {
-      id: '/projects/breast-cancer-cnn'
-      path: '/projects/breast-cancer-cnn'
-      fullPath: '/projects/breast-cancer-cnn'
-      preLoaderRoute: typeof ProjectsBreastCancerCnnRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/aglaea': {
-      id: '/projects/aglaea'
-      path: '/projects/aglaea'
-      fullPath: '/projects/aglaea'
-      preLoaderRoute: typeof ProjectsAglaeaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/agentic-rag': {
-      id: '/projects/agentic-rag'
-      path: '/projects/agentic-rag'
-      fullPath: '/projects/agentic-rag'
-      preLoaderRoute: typeof ProjectsAgenticRagRouteImport
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -157,10 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProjectsAgenticRagRoute: ProjectsAgenticRagRoute,
-  ProjectsAglaeaRoute: ProjectsAglaeaRoute,
-  ProjectsBreastCancerCnnRoute: ProjectsBreastCancerCnnRoute,
-  ProjectsLearnAndRoute: ProjectsLearnAndRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
