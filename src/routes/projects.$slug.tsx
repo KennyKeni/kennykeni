@@ -43,7 +43,7 @@ function ProjectPage() {
 
 			<Separator />
 
-			<div className="space-y-2">
+			<div className="prose prose-sm max-w-none">
 				<MDXContent code={project.mdx} />
 			</div>
 
