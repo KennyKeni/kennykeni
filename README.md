@@ -19,6 +19,8 @@ Building full-stack systems, distributed backend services, and ML-powered produc
 
 ## Experience
 
+- **Software Engineering Intern, Infrastructure & Network Observability, Zayo Group** (June 2026 - Present)
+- **Software Engineer Intern, Hillclimb (YC F25)** (Jan 2026 - Apr 2026)
 - **Software Engineering Intern, Viasat** (May 2025 - Aug 2025)
-- **Full Stack Developer, Bits of Good** (Jan 2024 - Present)
-- **ML Undergraduate Researcher, Intelligent Digital Communications** (Aug 2024 - Present)
+- **Full Stack Developer, Bits of Good** (Jan 2024 - Dec 2025)
+- **ML Undergraduate Researcher, Intelligent Digital Communications** (Aug 2024 - Dec 2025)
