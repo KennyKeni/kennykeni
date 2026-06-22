@@ -1,7 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
-  "compatibility_date": "2025-09-02",
+  "account_id": "1efaea1829ddf92205d2b7fc6d6cce28",
+  "compatibility_date": "2026-06-21",
   "compatibility_flags": ["nodejs_compat"],
   "routes": [
     { "pattern": "kennykeni.com", "custom_domain": true },
