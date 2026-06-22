@@ -24,7 +24,7 @@ links:
 featured: true
 ---
 
-Autumn is the Python RAG backend I keep separate from the Aglaea/Cyrene work. It is built around document collections, partitions, uploaded files, retrieval tools, and chat endpoints, with FastAPI as the application layer and LlamaIndex doing the retrieval orchestration.
+Autumn is the Python RAG backend separate from the Aglaea/Cyrene stack. It is built around document collections, partitions, uploaded files, retrieval tools, and chat endpoints, with FastAPI as the application layer and LlamaIndex doing the retrieval orchestration.
 
 ## Backend shape
 
@@ -32,10 +32,10 @@ The service keeps application state in PostgreSQL through SQLAlchemy and Alembic
 
 ## Retrieval work
 
-The interesting part is giving the agent explicit tools instead of hiding retrieval behind one opaque prompt. Autumn can retrieve semantically from collection content, use hybrid search where the source data supports it, and keep summaries or metadata available when a short answer needs more than nearest-neighbor chunks.
+Autumn exposes retrieval as explicit tools instead of hiding it behind one opaque prompt. It can retrieve semantically from collection content, use hybrid search where the source data supports it, and keep summaries or metadata available when a short answer needs more than nearest-neighbor chunks.
 
 ## Deployment notes
 
 - Containerized the API and backing services so the stack can run on a VPS instead of depending on a managed prototype environment.
 - Cut operating costs by 60% through the lower-cost deployment path.
-- Kept the Go/Kafka/Qdrant indexing work in Cyrene under Aglaea, so this project page stays focused on the Python FastAPI backend.
+- Scoped Autumn to the Python/FastAPI backend while Cyrene owns the Go/Kafka/Qdrant indexing path used by Aglaea.
