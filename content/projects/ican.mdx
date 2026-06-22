@@ -1,0 +1,41 @@
+---
+slug: "ican"
+title: "iCAN / Bits of Good"
+periodLabel: "Bits of Good / Jan 2024 - Dec 2025"
+tags:
+  - "TypeScript"
+  - "Next.js"
+  - "MongoDB"
+  - "Zod"
+  - "TanStack Query"
+  - "Ably"
+status: "Nonprofit Project"
+summary: "Medication-adherence game for children in clinical trials, built with Bits of Good for Atlanta nonprofit iCAN."
+stack:
+  - "TypeScript"
+  - "Next.js"
+  - "MongoDB"
+  - "Zod"
+  - "TanStack Query"
+  - "Ably"
+links:
+  - label: "GitHub"
+    href: "https://github.com/GTBitsOfGood/ican"
+featured: true
+---
+
+iCAN is a Bits of Good project for an Atlanta nonprofit working with children in clinical trials. The app turns medication adherence into a small game: children care for a virtual pet, parents manage medication routines, and the system tracks reminders, check-ins, rewards, and streaks.
+
+## Backend architecture
+
+I helped move the backend toward a clearer service/repository shape. Medication, pet, reward, notification, and streak logic live behind services instead of being spread through route handlers. The repository/action layer wraps MongoDB and Mongoose access, which makes the medication domain easier to test and reason about.
+
+## Medication flows
+
+The medication logic has more edge cases than the UI suggests. Zod schemas validate repeat units, weekly and monthly patterns, dose intervals, dose times, and duplicate schedule entries before data reaches the service layer. Check-ins update medication logs, streaks, and reward state together so a child sees the pet/game feedback tied to the real adherence event.
+
+## Frontend and notifications
+
+- Built TanStack Query hooks for medication and pet flows, including mutation invalidation and optimistic UI paths where the interaction needed to feel immediate.
+- Worked on onboarding and parent/child flows so the right screens load for the right account state.
+- Used Ably for real-time medication reminders and notification events, with email fallback when a reminder could not be delivered through the live channel.

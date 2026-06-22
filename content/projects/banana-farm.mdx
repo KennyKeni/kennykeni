@@ -1,0 +1,42 @@
+---
+slug: "banana-farm"
+title: "Banana Farm"
+periodLabel: "Project / 2026"
+tags:
+  - "TypeScript"
+  - "React"
+  - "Convex"
+  - "Cloudflare Workers"
+  - "Vitest"
+status: "Live"
+summary: "Shared multiplayer banana counter with server-authoritative clicks, upgrades, passive ticks, presence, and a leaderboard."
+stack:
+  - "TypeScript"
+  - "React"
+  - "Convex"
+  - "Cloudflare Workers"
+  - "Vitest"
+links:
+  - label: "Live Site"
+    href: "https://bananafarm.ing"
+  - label: "GitHub"
+    href: "https://github.com/KennyKeni/bananafarming"
+image: "/projects/banana-farm.png"
+featured: true
+---
+
+Banana Farm is a shared multiplayer clicker: everyone contributes to the same banana count, buys upgrades from the same economy, and competes on a per-player leaderboard. It is intentionally silly on the surface, but the backend has to be strict because every client is trying to update the same state.
+
+## Game loop
+
+Clicks are server-authoritative. The Convex backend applies per-player click attribution, rate-limits click bursts, and stores upgrade state so clients cannot invent production out of thin air. Upgrades use exponential costs, while passive banana production runs through scheduled ticks instead of depending on a browser tab staying open.
+
+## Player state
+
+Players get anonymous local identities, generated names, presence heartbeats, and leaderboard placement. That kept the game low-friction: you can open the site and play immediately, but the system still knows enough to show active players and rank contributions.
+
+## Shipping details
+
+- Deployed the Vite/React app through Cloudflare Workers with the custom `bananafarm.ing` domain.
+- Used self-hosted Convex functions for counter state, upgrades, players, and cron ticks.
+- Wrote Vitest and `convex-test` coverage around shared counter behavior, upgrade purchasing, player identity, and backend rules.

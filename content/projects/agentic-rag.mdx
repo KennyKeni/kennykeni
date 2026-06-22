@@ -4,22 +4,38 @@ title: "Agentic RAG"
 periodLabel: "Project / July 2025 - Present"
 tags:
   - "Python"
-  - "Go"
   - "FastAPI"
   - "LlamaIndex"
   - "Qdrant"
+  - "PostgreSQL"
   - "Docker"
 status: "In Progress"
-summary: "Agentic RAG backend with semantic/hybrid retrieval, reranking, and low-cost VPS deployment."
+summary: "Autumn, a Python FastAPI RAG backend for document collections, retrieval tools, and lower-cost self-hosted deployment."
 stack:
   - "Python"
-  - "Go"
   - "FastAPI"
   - "LlamaIndex"
   - "Qdrant"
+  - "PostgreSQL"
+  - "Docker"
+links:
+  - label: "GitHub"
+    href: "https://github.com/KennyKeni/autumn"
 featured: true
 ---
 
-- Built an agentic RAG FastAPI backend that reasons over user questions with vector retrieval.
-- Implemented semantic search, hybrid search, and reranking to improve answer quality.
-- Deployed Dockerized backend and databases to a VPS, reducing operating costs by 60%.
+Autumn is the Python RAG backend I keep separate from the Aglaea/Cyrene work. It is built around document collections, partitions, uploaded files, retrieval tools, and chat endpoints, with FastAPI as the application layer and LlamaIndex doing the retrieval orchestration.
+
+## Backend shape
+
+The service keeps application state in PostgreSQL through SQLAlchemy and Alembic migrations, stores vectors in Qdrant, and can run with object storage and Redis-compatible infrastructure for the parts that need them. The API is organized around collections, files, tools, and health checks, which makes it easier to debug the pipeline than a single "chat" endpoint would be.
+
+## Retrieval work
+
+The interesting part is giving the agent explicit tools instead of hiding retrieval behind one opaque prompt. Autumn can retrieve semantically from collection content, use hybrid search where the source data supports it, and keep summaries or metadata available when a short answer needs more than nearest-neighbor chunks.
+
+## Deployment notes
+
+- Containerized the API and backing services so the stack can run on a VPS instead of depending on a managed prototype environment.
+- Cut operating costs by 60% through the lower-cost deployment path.
+- Kept the Go/Kafka/Qdrant indexing work in Cyrene under Aglaea, so this project page stays focused on the Python FastAPI backend.

@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { allProjects } from "content-collections";
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getHomeData, getPersonData } from "@/data/portfolio";
+import { featuredProjects } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
 	component: Home,
@@ -13,7 +13,6 @@ export const Route = createFileRoute("/")({
 
 const homeData = getHomeData();
 const person = getPersonData();
-const featuredProjects = allProjects.filter((project) => project.featured);
 const revealViewport = { once: true, amount: 0.2 };
 const revealTransition = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const };
 
@@ -184,6 +183,14 @@ function Home() {
 							transition={{ ...revealTransition, delay: index * 0.1 }}
 						>
 							<Card className="h-full rounded-none border border-border shadow-none">
+								{project.image ? (
+									<img
+										src={project.image}
+										alt=""
+										className="aspect-video w-full border-b border-border object-cover"
+										loading="lazy"
+									/>
+								) : null}
 								<CardHeader className="space-y-4">
 									<CardTitle className="font-pixel-square text-xl tracking-wide uppercase">
 										{project.title}
@@ -204,11 +211,28 @@ function Home() {
 									<p className="font-pixel-grid flex-1 text-sm leading-6 text-muted-foreground">
 										{project.summary}
 									</p>
-									<Button asChild variant="primary" size="sm">
-										<Link to="/projects/$slug" params={{ slug: project.slug }}>
-											View Project
-										</Link>
-									</Button>
+									<div className="flex flex-wrap gap-2">
+										<Button asChild variant="primary" size="sm">
+											<Link
+												to="/projects/$slug"
+												params={{ slug: project.slug }}
+											>
+												View Project
+											</Link>
+										</Button>
+										{project.links.slice(0, 2).map((link) => (
+											<Button
+												key={link.href}
+												asChild
+												variant="outline"
+												size="sm"
+											>
+												<a href={link.href} target="_blank" rel="noreferrer">
+													{link.label}
+												</a>
+											</Button>
+										))}
+									</div>
 								</CardContent>
 							</Card>
 						</motion.div>

@@ -1,0 +1,46 @@
+---
+slug: "valedictorian"
+title: "Valedictorian"
+periodLabel: "Project / 2026 - Present"
+tags:
+  - "TypeScript"
+  - "Electron"
+  - "React"
+  - "SQLite"
+  - "Drizzle"
+  - "CLI"
+status: "Private Alpha"
+summary: "Local-first job-application workspace with an Electron app, SQLite/Drizzle data model, local API, CLI, and shared contracts."
+stack:
+  - "TypeScript"
+  - "Electron"
+  - "React"
+  - "SQLite"
+  - "Drizzle"
+  - "TanStack Table"
+links:
+  - label: "sparxie repo"
+    href: "https://github.com/KennyKeni/sparxie"
+featured: true
+---
+
+Valedictorian is my local-first job-application workspace. It is a desktop app, CLI, local HTTP API, and shared TypeScript contract package built around one premise: job-search automation should keep user data in a local workspace and expose explicit handoff points instead of hiding everything inside a hosted black box.
+
+## Desktop app
+
+The Electron app stores workspace state under a local `.valedictorian` directory and uses SQLite with Drizzle for the domain model. The schema covers companies, sources, applications, links, scores, workflow states, events, attempts, workflow runs, profile data, answers, secrets, policy evidence, and action queue state. That sounds like a lot, but it lets the app distinguish "I found a company" from "I am ready to apply" from "this needs user review."
+
+## Boundaries and local API
+
+I kept the app boundary explicit: the renderer talks through Electron IPC/preload surfaces, and automation clients talk through a local token-protected HTTP API. The API exposes workspaces, applications, sourcing, action queues, policy, profile data, secrets, workflow runs, and capabilities, so agents and CLI tools can do useful work without reaching straight into SQLite.
+
+## Automation workflow
+
+The sourcing pipeline processes candidate companies, records findings, detects duplicates, blocks missing URLs, scores applications, and promotes good candidates into the application workflow. The action queue uses concrete buckets such as `apply_now`, `needs_user_info`, `user_review_required`, `blocked`, and `skip_below_cutoff`, which keeps automation from pretending every next step is safe to run.
+
+## Shipping details
+
+- Built a signed and notarized Mac alpha outside the Mac App Store.
+- Built `valedictorian-cli` for doctors, workspace inspection, applications, action queues, sourcing, and agent handoffs.
+- Published `sparxie` as the shared public TypeScript contracts and client package used across the app and CLI.
+- Added transaction tests around application attempts and workflow steps so failed audit/event writes roll back instead of leaving half-started runs.

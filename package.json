@@ -13,7 +13,7 @@
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.13.8",
+    "@cloudflare/vite-plugin": "^1.42.1",
     "@radix-ui/react-checkbox": "^1.2.2",
     "@radix-ui/react-hover-card": "^1.1.10",
     "@radix-ui/react-separator": "^1.1.4",
@@ -51,21 +51,23 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
     "@content-collections/core": "^0.13.1",
-    "@content-collections/mdx": "^0.2.2",
     "@content-collections/vite": "^0.2.8",
+    "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/devtools-vite": "^0.3.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^22.10.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
     "jsdom": "^27.0.0",
+    "remark-frontmatter": "^5.0.0",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
     "web-vitals": "^5.1.0",
-    "wrangler": "^4.40.3"
+    "wrangler": "^4.103.0"
   }
 }

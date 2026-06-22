@@ -6,21 +6,49 @@ tags:
   - "TypeScript"
   - "SvelteKit"
   - "Elysia"
+  - "Go"
   - "PostgreSQL"
   - "Kafka"
+  - "Qdrant"
   - "Cloudflare Workers"
 status: "Production"
-summary: "Gaming content platform with rich text authoring, outbox-to-Kafka events, and edge uploads."
+summary: "Production Cobblemon community system split across the Aglaea frontend, Herta data API, and Cyrene RAG/indexing service."
 stack:
   - "TypeScript"
   - "SvelteKit"
+  - "Elysia"
+  - "Go"
   - "PostgreSQL"
   - "Kafka"
+  - "Qdrant"
   - "Cloudflare Workers"
+links:
+  - label: "Aglaea repo"
+    href: "https://github.com/KennyKeni/aglaea"
+  - label: "Herta repo"
+    href: "https://github.com/KennyKeni/herta"
+  - label: "Cyrene repo"
+    href: "https://github.com/KennyKeni/cyrene"
 featured: true
 ---
 
-- Built a production content platform supporting a gaming community with 500+ concurrent users.
-- Implemented transactional outbox publishing domain events to Kafka for RAG embedding invalidation.
-- Built Cloudflare Worker upload pipeline to R2 with JWT auth and strict file validation.
-- Designed trigram search and background workers with FOR UPDATE SKIP LOCKED for safe polling.
+Aglaea is the umbrella project for the Cobblemon community system I have been building: the Aglaea web app, the Herta data API, and the Cyrene RAG/indexing service. The system supports a production community with 500+ concurrent users, so the work is less about a single demo flow and more about keeping content, search, media, and game data moving without surprising the people using it.
+
+## Aglaea frontend
+
+The frontend is a SvelteKit app for community content and game-data browsing. It handles rich pages, species and article surfaces, searchable data views, and the authoring paths around them. I used Cloudflare-facing deployment pieces for the web layer and built an upload path to R2 with JWT checks and file validation so media can be accepted at the edge without routing everything through one application server.
+
+## Herta API
+
+Herta owns the structured game data. The newer backend is a Bun/Elysia service backed by PostgreSQL and Drizzle, with modules for Pokemon, moves, abilities, items, types, images, and spawn data. The API keeps exact filters and lookups in the relational layer where they belong, uses Redis-style response caching for common reads, and has integration tests around the domain modules instead of treating the API as a loose collection of routes.
+
+## Cyrene RAG service
+
+Cyrene is the Go service that connects domain events to retrieval. It consumes Kafka events, turns updated records into embedding text, upserts or deletes Qdrant vectors, and exposes tools for both structured search and semantic lookup. That split lets Aglaea answer plain data questions through Herta while reserving vector search for queries that need context rather than a single exact row.
+
+## Engineering notes
+
+- Used an outbox-to-Kafka path so content and embedding invalidation can move through the system without coupling the web request to every downstream update.
+- Kept structured search and RAG search separate. Herta handles exact filters; Cyrene handles retrieved context.
+- Used background worker patterns such as `FOR UPDATE SKIP LOCKED` where polling needed to be safe under concurrency.
+- Treated uploads, indexing, and content edits as separate failure domains so one slow path would not make the whole community site feel stuck.

@@ -17,10 +17,28 @@ stack:
   - "Convex"
   - "Excalidraw"
   - "Vercel AI SDK"
-featured: false
+links:
+  - label: "Demo"
+    href: "https://valedictorian.app"
+  - label: "GitHub"
+    href: "https://github.com/KennyKeni/humansand-hackathon"
+image: "/projects/learn-and.png"
+featured: true
 ---
 
-- Built a real-time collaborative classroom platform where AI agents assess student comprehension and pair students with complementary knowledge gaps for peer learning.
-- Implemented AI-driven check-in system that conducts 1-on-1 conversations with each student, extracts per-topic comprehension profiles, and computes optimal study group matches.
-- Integrated Excalidraw whiteboards with real-time sync via Convex for professor teaching, group collaboration, and AI-generated concept diagrams.
-- Designed AI group chat monitor that intervenes as a confused peer student to challenge misconceptions and prompt deeper understanding.
+Learn& was our Human& Hackathon project: a classroom tool where a professor teaches on a shared whiteboard, students check in when they are confused, and the app forms study groups from what each student actually understands.
+
+## Classroom flow
+
+The teacher creates a session, students join, and everyone sees the shared Excalidraw board. Convex stores session state, whiteboard elements, cursors, messages, comprehension records, and proposed matches, which kept the hackathon prototype real-time without adding a separate websocket service.
+
+## AI pieces
+
+- Captured whiteboard snapshots and sent them through a multimodal model to transcribe what had been taught.
+- Synthesized the lesson timeline from snapshots so student check-ins had context from the actual board, not a generic course prompt.
+- Ran short 1-on-1 AI conversations with students and extracted per-topic comprehension profiles from the transcript.
+- Computed study-group matches from those profiles, then created group rooms with opening messages tailored to each group.
+
+## Group rooms
+
+The group rooms were not just chat boxes. The app could generate diagrams from the discussion, summarize progress for the teacher, and have an AI participant ask clarifying questions when the group appeared to settle on a misconception. That made the prototype feel closer to a teaching workflow than a static matching algorithm.

@@ -1,5 +1,4 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
-import { compileMDX } from '@content-collections/mdx'
 import { z } from 'zod'
 
 const projects = defineCollection({
@@ -14,16 +13,18 @@ const projects = defineCollection({
     status: z.string(),
     summary: z.string(),
     stack: z.array(z.string()),
+    links: z
+      .array(
+        z.object({
+          label: z.string(),
+          href: z.string().url(),
+        }),
+      )
+      .default([]),
+    image: z.string().optional(),
     featured: z.boolean().default(false),
     content: z.string(),
   }),
-  transform: async (document, context) => {
-    const mdx = await compileMDX(context, document)
-    return {
-      ...document,
-      mdx,
-    }
-  },
 })
 
 export default defineConfig({
