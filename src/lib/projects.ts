@@ -2,10 +2,10 @@ import { allProjects } from "content-collections";
 
 const projectOrder = [
 	"aglaea",
-	"valedictorian",
 	"ican",
 	"learn-and",
 	"banana-farm",
+	"valedictorian",
 	"agentic-rag",
 	"breast-cancer-cnn",
 ];
