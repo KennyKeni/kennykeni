@@ -5,9 +5,9 @@ const projectOrder = [
 	"ican",
 	"learn-and",
 	"banana-farm",
-	"valedictorian",
 	"agentic-rag",
 	"breast-cancer-cnn",
+	"valedictorian",
 ];
 
 function projectRank(slug: string) {
