@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -224,11 +225,12 @@ function Home() {
 											<Button
 												key={link.href}
 												asChild
-												variant="outline"
+												variant="action"
 												size="sm"
 											>
 												<a href={link.href} target="_blank" rel="noreferrer">
 													{link.label}
+													<ExternalLink className="h-3 w-3" />
 												</a>
 											</Button>
 										))}

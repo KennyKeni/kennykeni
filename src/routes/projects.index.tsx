@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -69,9 +70,10 @@ function Projects() {
 									</Link>
 								</Button>
 								{project.links.slice(0, 2).map((link) => (
-									<Button key={link.href} asChild variant="outline" size="sm">
+									<Button key={link.href} asChild variant="action" size="sm">
 										<a href={link.href} target="_blank" rel="noreferrer">
 											{link.label}
+											<ExternalLink className="h-3 w-3" />
 										</a>
 									</Button>
 								))}
