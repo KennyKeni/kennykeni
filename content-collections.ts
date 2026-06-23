@@ -27,6 +27,21 @@ const projects = defineCollection({
   }),
 })
 
+const blogs = defineCollection({
+  name: 'blogs',
+  directory: 'content/blogs',
+  include: '**/*.mdx',
+  schema: z.object({
+    slug: z.string(),
+    title: z.string(),
+    publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    summary: z.string(),
+    tags: z.array(z.string()),
+    image: z.string().optional(),
+    content: z.string(),
+  }),
+})
+
 export default defineConfig({
-  collections: [projects],
+  collections: [projects, blogs],
 })

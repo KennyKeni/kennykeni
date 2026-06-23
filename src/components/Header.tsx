@@ -17,9 +17,8 @@ export default function Header() {
 	const pathname = useRouterState({
 		select: (state) => state.location.pathname,
 	});
-	const projectsRoot = navItems.find((item) => item.to === "/projects");
-	const topLevelItems = navItems.filter(
-		(item) => item.to !== "/projects" && !item.to.startsWith("/projects/"),
+	const visibleNavItems = navItems.filter(
+		(item) => !item.to.startsWith("/projects/"),
 	);
 	const isProjectsRoute =
 		pathname === "/projects" || pathname.startsWith("/projects/");
@@ -34,81 +33,83 @@ export default function Header() {
 					{person.name}
 				</Link>
 				<nav className="flex flex-wrap gap-2">
-					{topLevelItems.map((item) => (
-						<Button key={item.to} asChild variant="nav" size="md">
-							<Link
-								to={item.to}
-								activeProps={{
-									className:
-										"!border-foreground !bg-foreground !text-white hover:!text-white",
-								}}
-							>
-								{item.label}
-							</Link>
-						</Button>
-					))}
-					{projectsRoot ? (
-						<HoverCard openDelay={80} closeDelay={80}>
-							<HoverCardTrigger asChild>
-								<Button
-									variant="nav"
-									size="md"
-									className={
-										isProjectsRoute
-											? "!border-foreground !bg-foreground !text-white hover:!text-white"
-											: undefined
-									}
-								>
-									{projectsRoot.label}
-									<ChevronDown className="h-3.5 w-3.5" />
-								</Button>
-							</HoverCardTrigger>
-							<HoverCardContent
-								align="end"
-								sideOffset={10}
-								className="w-72 rounded-none border-border p-2"
-							>
-								<div className="flex flex-col gap-1">
+					{visibleNavItems.map((item) =>
+						item.to === "/projects" ? (
+							<HoverCard key={item.to} openDelay={80} closeDelay={80}>
+								<HoverCardTrigger asChild>
 									<Button
-										asChild
 										variant="nav"
 										size="md"
-										className="w-full justify-start font-bold"
+										className={
+											isProjectsRoute
+												? "!border-foreground !bg-foreground !text-white hover:!text-white"
+												: undefined
+										}
 									>
-										<Link
-											to={projectsRoot.to}
-											activeProps={{
-												className:
-													"!border-foreground !bg-foreground !text-white hover:!text-white",
-											}}
-										>
-											All Projects
-										</Link>
+										{item.label}
+										<ChevronDown className="h-3.5 w-3.5" />
 									</Button>
-									{projects.map((project) => (
+								</HoverCardTrigger>
+								<HoverCardContent
+									align="end"
+									sideOffset={10}
+									className="w-72 rounded-none border-border p-2"
+								>
+									<div className="flex flex-col gap-1">
 										<Button
-											key={project.slug}
 											asChild
 											variant="nav"
 											size="md"
 											className="w-full justify-start font-bold"
 										>
 											<Link
-												to="/projects/$slug"
-												params={{ slug: project.slug }}
+												to={item.to}
 												activeProps={{
 													className:
 														"!border-foreground !bg-foreground !text-white hover:!text-white",
 												}}
 											>
-												{project.title}
+												All Projects
 											</Link>
 										</Button>
-									))}
-								</div>
-							</HoverCardContent>
-						</HoverCard>
-					) : null}
+										{projects.map((project) => (
+											<Button
+												key={project.slug}
+												asChild
+												variant="nav"
+												size="md"
+												className="w-full justify-start font-bold"
+											>
+												<Link
+													to="/projects/$slug"
+													params={{ slug: project.slug }}
+													activeProps={{
+														className:
+															"!border-foreground !bg-foreground !text-white hover:!text-white",
+													}}
+												>
+													{project.title}
+												</Link>
+											</Button>
+										))}
+									</div>
+								</HoverCardContent>
+							</HoverCard>
+						) : (
+							<Button key={item.to} asChild variant="nav" size="md">
+								<Link
+									to={item.to}
+									activeOptions={{ exact: item.to === "/" }}
+									activeProps={{
+										className:
+											"!border-foreground !bg-foreground !text-white hover:!text-white",
+									}}
+								>
+									{item.label}
+								</Link>
+							</Button>
+						),
+					)}
 				</nav>
 			</div>
 		</header>

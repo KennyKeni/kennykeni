@@ -6,7 +6,8 @@
 	},
 	"headerNav": [
 		{ "to": "/", "label": "Home" },
-		{ "to": "/projects", "label": "Projects" }
+		{ "to": "/projects", "label": "Projects" },
+		{ "to": "/blogs", "label": "Blogs" }
 	],
 	"home": {
 		"profileLinks": [
