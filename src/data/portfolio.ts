@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-import portfolioRaw from "./portfolio.json";
-
 const linkSchema = z.object({
 	label: z.string(),
 	href: z.url(),
@@ -47,7 +45,133 @@ const portfolioSchema = z.object({
 	}),
 });
 
-const portfolioData = portfolioSchema.parse(portfolioRaw);
+type PortfolioData = z.infer<typeof portfolioSchema>;
+
+const portfolioSource = {
+	person: {
+		name: "Kenny Lin",
+		homeEyebrow: "Resume",
+		contactLine: "hello@kennykeni.com | New York, NY",
+	},
+	headerNav: [
+		{ to: "/", label: "Home" },
+		{ to: "/projects", label: "Projects" },
+		{ to: "/blogs", label: "Blogs" },
+	],
+	home: {
+		profileLinks: [
+			{
+				label: "linkedin.com/in/kennylin344",
+				href: "https://linkedin.com/in/kennylin344",
+			},
+			{
+				label: "github.com/kennykeni",
+				href: "https://github.com/kennykeni",
+			},
+		],
+		education: [
+			{
+				school: "Georgia Institute of Technology",
+				degree: "Master of Science in Computer Science (Concurrent B.S./M.S.)",
+				location: "Atlanta, GA",
+				period: "Aug 2025 - Expected May 2027",
+			},
+			{
+				school: "Georgia Institute of Technology",
+				degree: "Bachelor of Science in Computer Science (GPA: 4.0)",
+				location: "Atlanta, GA",
+				period: "Aug 2023 - May 2026",
+			},
+		],
+		experiences: [
+			{
+				role: "Incoming Software Engineer Intern, Workplace",
+				org: "Verkada",
+				location: "San Mateo, CA",
+				period: "Fall 2026",
+				bullets: ["Incoming intern on Verkada's Workplace team."],
+			},
+			{
+				role: "Software Engineering Intern, Infrastructure & Network Observability",
+				org: "Zayo Group",
+				location: "Denver, CO",
+				period: "June 2026 - Present",
+				bullets: [
+					"Built Backstage self-service flows that bind platform capabilities to services through a platform.yaml contract.",
+					"Worked across GitLab, Helm, and Terraform provisioning paths for internal infrastructure and network observability workflows.",
+					"Added GitLab CI validation for platform.yaml changes so invalid capability metadata is caught before merge.",
+				],
+			},
+			{
+				role: "Software Engineer Intern",
+				org: "Hillclimb (YC F25)",
+				location: "Remote",
+				period: "Jan 2026 - Apr 2026",
+				bullets: [
+					"Built a research data platform UI and npm SDK with SvelteKit, Cloudflare Workers, and TypeScript.",
+					"Implemented an AWS Lambda and HonoJS pipeline for coding trace processing and redaction.",
+					"Managed Terraform across 6 AWS accounts and reduced NAT gateway costs by 74%.",
+				],
+			},
+			{
+				role: "Software Engineering Intern",
+				org: "Viasat",
+				location: "Carlsbad, CA",
+				period: "May 2025 - Aug 2025",
+				bullets: [
+					"Automated customer order validation and fulfillment with Python batch processing and AWS SQS, increasing speed by 300%.",
+					"Built concurrent worker pipeline processing 20+ batches in parallel, cutting runtime from 4 hours to 10 minutes.",
+					"Designed GraphQL endpoints and integrated AWS SQS, S3, and CloudWatch for real-time batch monitoring.",
+				],
+			},
+			{
+				role: "Full Stack Developer",
+				org: "Bits of Good (Nonprofit)",
+				location: "Atlanta, GA",
+				period: "Jan 2024 - Dec 2025",
+				bullets: [
+					"Reworked the iCAN backend into service and repository layers with Zod request schemas for medication flows.",
+					"Built medication schedule logic, streak rewards, pet state updates, and notification paths for child and parent workflows.",
+					"Wired React views through TanStack Query hooks so mutations, invalidation, and onboarding state stayed consistent.",
+				],
+			},
+			{
+				role: "Machine Learning Undergraduate Researcher",
+				org: "Intelligent Digital Communications",
+				location: "Atlanta, GA",
+				period: "Aug 2024 - Dec 2025",
+				bullets: [
+					"Developed a near real-time system to identify and triangulate wireless users in signal-dense environments.",
+					"Applied transfer learning to Co-DETR models with PyTorch and scikit-learn, achieving 85% detection accuracy.",
+				],
+			},
+		],
+		skills: [
+			{
+				label: "Languages",
+				value:
+					"Python, TypeScript, Go, JavaScript, Java, Kotlin, C, C++, SQL, HTML/CSS",
+			},
+			{
+				label: "Frameworks",
+				value:
+					"React, Next.js, SvelteKit, Hono, Elysia, NestJS, FastAPI, Kysely, BetterAuth, PyTorch, TensorFlow, LlamaIndex, Tailwind",
+			},
+			{
+				label: "Databases & Cloud",
+				value:
+					"PostgreSQL, MongoDB, SQLite, Convex, Redis, Qdrant, AWS (Lambda, RDS, SQS, S3, CloudWatch), Cloudflare Workers, Docker",
+			},
+			{
+				label: "Platform & Tools",
+				value:
+					"Terraform, Kubernetes, Helm, GitLab CI/CD, Backstage, Kafka, Ably, Git, Linux, Bun, RESTful APIs",
+			},
+		],
+	},
+} satisfies PortfolioData;
+
+const portfolioData = portfolioSchema.parse(portfolioSource);
 
 export function getPortfolioData() {
 	return portfolioData;
