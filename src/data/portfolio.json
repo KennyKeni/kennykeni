@@ -25,7 +25,7 @@
 				"school": "Georgia Institute of Technology",
 				"degree": "Master of Science in Computer Science (Concurrent B.S./M.S.)",
 				"location": "Atlanta, GA",
-				"period": "Aug 2025 - Expected Dec 2027"
+				"period": "Aug 2025 - Expected May 2027"
 			},
 			{
 				"school": "Georgia Institute of Technology",
@@ -35,6 +35,13 @@
 			}
 		],
 		"experiences": [
+			{
+				"role": "Incoming Software Engineer Intern, Workplace",
+				"org": "Verkada",
+				"location": "San Mateo, CA",
+				"period": "Fall 2026",
+				"bullets": ["Incoming intern on Verkada's Workplace team."]
+			},
 			{
 				"role": "Software Engineering Intern, Infrastructure & Network Observability",
 				"org": "Zayo Group",

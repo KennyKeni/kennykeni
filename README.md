@@ -19,6 +19,7 @@ Building full-stack systems, distributed backend services, and ML-powered produc
 
 ## Experience
 
+- **Incoming Software Engineer Intern, Workplace, Verkada** (Fall 2026)
 - **Software Engineering Intern, Infrastructure & Network Observability, Zayo Group** (June 2026 - Present)
 - **Software Engineer Intern, Hillclimb (YC F25)** (Jan 2026 - Apr 2026)
 - **Software Engineering Intern, Viasat** (May 2025 - Aug 2025)
